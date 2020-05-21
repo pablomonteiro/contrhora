@@ -1,0 +1,26 @@
+<div class="panel-body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><%= t 'record.label.user' %></td>
+                <th><%= t 'record.label.project' %></td>
+                <th><%= t 'record.label.issue' %></td>
+                <th><%= t 'record.label.register' %></td>
+                <th><%= t 'record.label.time_spent' %></td>
+            </tr>
+        </thead>
+        <tbody>
+            <% @records.each do |record| %>    
+                <tr>
+                    <td><%= record.user_id %></td>
+                    <td><%= record.project %></td>
+                    <td><%= record.issue %></td>
+                    <td><%= record.register.strftime("%d/%m/%Y") %></td>
+                    <td><%= record.time_spent %></td>
+                    <td><%= link_to 'Show', record %></td>
+                    <td><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

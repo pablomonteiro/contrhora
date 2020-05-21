@@ -2,17 +2,32 @@ class RecordsController < ApplicationController
 
     before_action :require_authentication
 
+    def index
+        @records = Record.of_user(current_user).this_month.register_desc
+    end
+
+    def time
+        @records = Record.this_month.user_asc.register_desc
+    end
+
     def new
         @record = Record.new
     end
 
     def create
         @record = Record.new(param_record)
+        @record.user_id = current_user.id
         if @record.save
-            redirect_to @record, :notice => 'Register saved!'
+            redirect_to action: :index, :notice => 'Register saved!'
         else
             render :new
         end
+    end
+
+    def destroy
+        @record = Record.find(params[:id])
+        @record.destroy
+        redirect_to records_path, :notice => 'Register deleted!'
     end
 
     def show

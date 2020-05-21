@@ -1,0 +1,23 @@
+<div class="panel-body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><%= t 'user.label.name' %></td>
+                <th><%= t 'user.label.login' %></td>
+                <th><%= t 'user.label.email' %></td>
+                <th><%= t 'user.label.admin' %></td>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user| %>    
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.login %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.admin %></td>
+                    <td><%= link_to 'Show', user %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

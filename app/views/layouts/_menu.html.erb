@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+    <nav id="menu" class="menu">
+        <ul>
+            <li><a href="#"><%= link_to t('home.menu'), root_path %></a></li>
+            <li><a href="#"><%= link_to t('record.view.menu.my'), records_path %></a></li>
+            <li><a href="#"><%= link_to t('record.new.menu'), new_record_path %></a></li>
+            <% if user_admin? %>
+                <li><a href="/records/time"><%= link_to t('record.view.menu.time') %></a></li>
+                <li><a href="#"><%= link_to t('record.view.menu.time'), records_path %></a></li>
+                <li><a href="#"><%= link_to t('user.new.menu'), new_user_path %></a></li>
+                <li><a href="#"><%= link_to t('user.view.menu'), users_path %></a></li>
+            <% end %>
+        </ul>
+    </nav>
+<% end %>

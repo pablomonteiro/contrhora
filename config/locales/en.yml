@@ -30,4 +30,40 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  application:
+    name: 'Contrhora'
+
+  home: 
+    menu: 'Home'
+
+  layout:
+    signout: 'Sign Out'
+
+  record:
+    new:
+      menu: 'New Record'
+      button: 'Save Record'
+    view: 
+      menu: 
+        my: 'My Records'
+        time: 'Time Records'
+    show:
+      title: 'Records'
+    label:
+      title: 'Records'
+      project: 'Project'
+      issue: 'Task'
+      register: 'Date'
+
+  user:
+    new:
+      menu: 'New Users'
+    view:
+      menu: 'Users'
+    label:
+      name: 'User Name'
+      login: 'Login'
+      email: 'Email'
+      admin: 'Administrator'
+  
+

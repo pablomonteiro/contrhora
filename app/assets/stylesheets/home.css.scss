@@ -1,0 +1,18 @@
+
+.menu ul {
+    padding:0px;
+    margin:0px;
+    list-style:none;
+}
+
+.menu ul li { 
+    display: inline; 
+}
+
+.menu ul li a {
+    padding: 2px 8px;
+    display: inline-block;
+    /* visual do link */
+    color: #fff;
+    text-decoration: none;
+}

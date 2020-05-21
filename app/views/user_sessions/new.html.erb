@@ -1,26 +1,15 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<body>
-    <fieldset>
-        <div class="panel panel-primary">
-            <div class="panel-heading">Login</div>
-                <br/>
-                <%= form_for @session do |f| %>
-                    <div class="col-md-12">
-                        <%= f.label :email, :class => "col-md-2 control-label" %>
-                        <%= f.text_field :email, :class => "col-md-6 form-control" %>
-                    </div>
-                    <div class="col-md-12">
-                        <%= f.label :password, :class => "col-md-2 control-label" %>
-                        <%= f.text_field :password, :class => "col-md-6 form-control" %>
-                    </div>
-                    <div class = "form-actions">
-                        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-                    </div>
-                <% end %>
-            </div>
+<div class="panel-body">
+    <%= form_for @session do |f| %>
+        <div class="col-md-12">
+            <%= f.label :email, :class => "col-md-2 control-label" %>
+            <%= f.text_field :email, :class => "col-md-6 form-control" %>
         </div>
-    </fieldset>
-</body>    
+        <div class="col-md-12">
+            <%= f.label :password, :class => "col-md-2 control-label" %>
+            <%= f.password_field :password, :class => "col-md-6 form-control" %>
+        </div>
+        <div class = "form-actions">
+            <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+        </div>
+    <% end %>
+</div>    

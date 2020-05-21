@@ -1,8 +1,28 @@
-<h2>Registro <%= @record.id %></h2>
-<p>
-<%= @record.issue %>
-</p>
-
-<p>
-<%= @record.register%>
-</p>
+<div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
+            <label><%= t('record.label.project') %></label>
+            <%= @record.project %>
+        </div>
+        <div class="col-md-3">
+            <label><%= t('record.label.issue') %></label>
+            <%= @record.issue %>
+        </div>
+        <div class="col-md-3">
+            <label><%= t('record.label.register') %></label>
+            <%= @record.register.strftime("%d/%m/%Y") %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label><%= t('record.label.comment')  %></label>
+            <%= @record.comment %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label><%= t('record.label.requester') %></label>
+            <%= @record.requester %>
+        </div>
+    </div>
+</div>

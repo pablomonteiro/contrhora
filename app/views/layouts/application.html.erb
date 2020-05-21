@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ContrHora</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<head>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+    <fieldset>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-2">
+                        <h4><%= t 'application.name'%></h4>
+                    </div>
+                    <div class="col-md-8">
+                        <%= render "/layouts/menu" %>
+                    </div>
+                    <div class="col-md-2">
+                        <%= render "/layouts/logout" %>
+                    </div>
+                </div>
+            </div>
+            <%= yield %>
+        </div>
+    </fieldset>
+</body>
