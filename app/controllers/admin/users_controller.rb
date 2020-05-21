@@ -12,12 +12,9 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(users_params)
-        puts 'passou create'
         if @user.save
-            puts 'passou save'
             redirect_to @user, :notice => 'User saved!'
         else
-            puts 'passou new'
             puts @user.errors.messages
             render :new
         end

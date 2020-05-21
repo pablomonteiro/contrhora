@@ -6,10 +6,6 @@ class RecordsController < ApplicationController
         @records = Record.of_user(current_user).this_month.register_desc
     end
 
-    def time
-        @records = Record.this_month.user_asc.register_desc
-    end
-
     def new
         @record = Record.new
     end
@@ -20,6 +16,7 @@ class RecordsController < ApplicationController
         if @record.save
             redirect_to action: :index, :notice => 'Register saved!'
         else
+            puts @record.errors.messages
             render :new
         end
     end

@@ -40,20 +40,22 @@ en:
     signout: 'Sign Out'
 
   record:
-    new:
-      menu: 'New Record'
-      button: 'Save Record'
-    view: 
-      menu: 
-        my: 'My Records'
-        time: 'Time Records'
-    show:
-      title: 'Records'
+    export:
+      csv: 'Export CSV'
     label:
       title: 'Records'
       project: 'Project'
       issue: 'Task'
       register: 'Date'
+    new:
+      menu: 'New Record'
+      button: 'Save Record'
+    show:
+      title: 'Records'
+    view: 
+      menu: 
+        my: 'My Records'
+        admin: 'Time Records'
 
   user:
     new:
@@ -66,4 +68,3 @@ en:
       email: 'Email'
       admin: 'Administrator'
   
-

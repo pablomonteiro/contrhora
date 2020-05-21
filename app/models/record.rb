@@ -15,6 +15,22 @@ class Record < ApplicationRecord
     spent.divmod(60).join(':')
   end
 
+  def self.to_csv
+    header = %w{User Project IssueDate Hour In Hour Out Requester Comment}
+    attributes = %w{user_name project issue register hour_in hour_out requester comment}
+    options = {headers: true, col_sep: ';'}
+    CSV.generate(options) do |csv|
+      csv << header
+      all.each do |record|
+        csv << attributes.map{ |attr| record.send(attr) }
+      end
+    end
+  end
+
+  def user_name
+    self.user.name
+  end
+
   private 
 
   def time_to_minutes(time)
