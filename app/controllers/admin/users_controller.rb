@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
 
     before_action :require_authentication
 
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(users_params)
         if @user.save
-            redirect_to @user, :notice => 'User saved!'
+            redirect_to action: :new, :notice => 'User saved!'
         else
             puts @user.errors.messages
             render :new
