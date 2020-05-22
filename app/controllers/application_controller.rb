@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
 
     delegate :current_user, :user_signed_in?, :user_admin?, :to => :user_session
-    helper_method :current_user, :user_signed_in?, :user_admin?
+    delegate :all_users, :to => :user
+    helper_method :current_user, :user_signed_in?, :user_admin?, :all_users
 
     def user_session
         UserSession.new(session)
+    end
+
+    def user
+        User.new
     end
 
     def require_authentication

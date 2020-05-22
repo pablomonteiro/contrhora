@@ -7,4 +7,8 @@ class User < ApplicationRecord
         User.find_by_email(email).try(:authenticate, password)
     end
 
+    def all_users
+        User.all
+    end
+
 end

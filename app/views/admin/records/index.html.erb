@@ -1,7 +1,16 @@
 <div class="panel-body">
     <div class = "form-actions">
-        <a href="/admin/records.csv"><button class="btn btn-success"><%=t('record.export.csv')%></button></a>
+        <a href=""><button id="export_csv" class="btn btn-success"><%=t('record.export.csv')%></button></a>
     </div>
+    <%= form_for(admin_records_path, method: :get) do %>
+        <div class="form-group">
+            <div class="col-md-4">  
+                <%= select_tag("user_id", options_from_collection_for_select(User.all, "id", "name", params[:user_id].to_i), {include_blank: true}) %>
+                <%= submit_tag ("Search"), name: nil %>
+                
+            </div>
+        </div>
+    <% end %>
     <table class="table">
         <thead>
             <tr>

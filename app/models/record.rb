@@ -10,18 +10,26 @@ class Record < ApplicationRecord
     where(:user_id => user_id)
   end
 
+  def self.search_by_user(user_id)
+    if user_id.present?
+      of_user(user_id).register_desc
+    else
+      this_month.user_asc.register_desc
+    end
+  end
+
   def time_spent
     spent = (time_to_minutes(self.hour_out) - time_to_minutes(self.hour_in))
     spent.divmod(60).join(':')
   end
 
-  def self.to_csv
+  def self.to_csv(user_id)
     header = %w{User Project IssueDate Hour In Hour Out Requester Comment}
     attributes = %w{user_name project issue register hour_in hour_out requester comment}
     options = {headers: true, col_sep: ';'}
     CSV.generate(options) do |csv|
       csv << header
-      all.each do |record|
+      self.search_by_user(user_id).each do |record|
         csv << attributes.map{ |attr| record.send(attr) }
       end
     end
