@@ -1,15 +1,23 @@
+.language {
+    font-size: 10px;
+}
 
-.menu ul {
+.language .bar {
+    border-left: 1px solid #fff;
+    height: 10px;
+  }
+
+.language ul, .menu ul {
     padding:0px;
     margin:0px;
     list-style:none;
 }
 
-.menu ul li { 
+.language ul li, .menu ul li { 
     display: inline; 
 }
 
-.menu ul li a {
+.language ul li a, .menu ul li a {
     padding: 2px 8px;
     display: inline-block;
     /* visual do link */
@@ -17,8 +25,18 @@
     text-decoration: none;
 }
 
+.language ul li a {
+    color: #fff
+}
+
 .logout a {
     font-size: 12px;
-    color: #aaa;
+    color: #ccc;
     text-decoration: none;
 }
+
+.logout p {
+    font-size: 13px;
+    color: #fff;
+}
+

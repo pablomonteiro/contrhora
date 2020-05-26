@@ -1,0 +1,62 @@
+
+pt:
+  activerecord:
+    models:
+      record: "Registro"
+    attributes:
+      record:
+        project: "Projeto"
+        requester: "Solicitante"
+        register: "Data"
+        issue: "Tarefa"
+        hour_in: "Início"
+        hour_out: "Término"
+        comment: "O que foi feito?"
+      user:
+        name: "Nome"
+        login: "Login"
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        admin: "Administrador"
+
+  application:
+    name: 'Contrhora'
+
+  home: 
+    menu: 'Home'
+
+  layout:
+    signout: 'Sair'
+
+  record:
+    export:
+      csv: 'Exportar CSV'
+    label:
+      title: 'Registros'
+      project: 'Projeto'
+      issue: 'Tarefa'
+      register: 'Data'
+      user: "Usuário"
+      time_spent: "Tempo Gasto"
+    new:
+      menu: 'Registrar'
+      button: 'Gravar'
+    show:
+      title: 'Registro'
+    view: 
+      menu: 
+        my: 'Meus Registros'
+        admin: 'Time Registros'
+
+  user:
+    new:
+      menu: 'Usuário'
+      button: "Gravar"
+    view:
+      menu: 'Usuários'
+    label:
+      name: 'Nome'
+      login: 'Login'
+      email: 'Email'
+      admin: 'Administrador'

@@ -1,10 +1,10 @@
 <% if user_signed_in? %>
-    <div class="text-center">
+    <div class="text-center logout">
             <div class="col-md-12">
                 <p> <%= current_user.name %> </p>
             </div>
-            <div class="col-md-12 logout">
-                <p><%= link_to t('layout.signout'), user_session_path(1), method: :delete %></p>
+            <div class="col-md-12">
+                <%= link_to t('layout.signout'), user_session_path(locale, 1), method: :delete %>
             </div>
     </div>
 <% end %>

@@ -9,14 +9,19 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <h4><%= t 'application.name'%></h4>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <%= render "/layouts/menu" %>
                     </div>
                     <div class="col-md-3">
-                        <%= render "/layouts/logout" %>
+                        <div class="col-md-5">
+                            <%= render "/layouts/language" %>
+                        </div>
+                        <div class="col-md-7">
+                            <%= render "/layouts/logout" %>
+                        </div>
                     </div>
                 </div>
             </div>

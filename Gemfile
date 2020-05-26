@@ -25,6 +25,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Include I18n gem
+gem 'rails-i18n'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

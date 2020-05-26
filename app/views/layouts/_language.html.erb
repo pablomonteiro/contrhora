@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <nav class="language">
+    <ul>
+      <li><%= link_to 'EN', root_path(locale: :en) %></li>
+      <span class="bar"></span>
+      <li><%= link_to 'PT', root_path(locale: :pt) %></li>
+    </ul>
+  </nav>
+<% end %>

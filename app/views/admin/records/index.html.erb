@@ -29,7 +29,7 @@
                     <td><%= record.issue %></td>
                     <td><%= record.register.strftime("%d/%m/%Y") %></td>
                     <td><%= record.time_spent %></td>
-                    <td><%= link_to 'Show', record %></td>
+                    <td><%= link_to 'Show', record_path(locale, record) %></td>
                 </tr>
             <% end %>
         </tbody>
