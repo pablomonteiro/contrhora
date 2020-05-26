@@ -1,7 +1,10 @@
 <% if user_signed_in? %>
-    <nav id="logout" class="menu">
-        <ul>
-            <li><%= link_to t('layout.signout'), user_session_path(1), method: :delete %></li>
-        </ul>
-    </nav>
+    <div class="text-center">
+            <div class="col-md-12">
+                <p> <%= current_user.name %> </p>
+            </div>
+            <div class="col-md-12 logout">
+                <p><%= link_to t('layout.signout'), user_session_path(1), method: :delete %></p>
+            </div>
+    </div>
 <% end %>

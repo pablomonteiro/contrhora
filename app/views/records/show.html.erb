@@ -14,7 +14,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <label><%= t('record.label.hour_in')  %></label>
+            <%= @record.hour_in %>
+        </div>
+        <div class="col-md-2">
+            <label><%= t('record.label.hour_out')  %></label>
+            <%= @record.hour_out %>
+        </div>
+        <div class="col-md-2">
+            <label><%= t('record.label.time_spent')  %></label>
+            <%= @record.time_spent %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <label><%= t('record.label.comment')  %></label>
             <%= @record.comment %>
         </div>
