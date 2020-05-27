@@ -1,5 +1,5 @@
 <div class="panel-body">
-    <%= form_for @record  do |f| %>
+    <%= form_for @record, url: record_path(I18n.locale, @record)  do |f| %>
         <div class="form-group">
             <div class="col-md-4">
                 <%= f.label :project, :class => "col-md-4 control-label" %>
@@ -30,7 +30,11 @@
             </div>
             <div class="col-md-3">
                 <%= f.label :hour_out, :class => "col-md-12 control-label" %>
-                <%= f.time_field :hour_out, value: "%H:%M", :class => "form-control"%>
+                <% if @record.new_record? %>
+                    <%= f.time_field :hour_out, value: "%H:%M", class: "form-control"%>
+                <% else %>
+                    <%= f.time_field :hour_out, value: "#{@record.hour_out}", class: "form-control" %>
+                <% end %>
             </div>
         </div>
 

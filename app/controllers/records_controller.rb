@@ -14,17 +14,31 @@ class RecordsController < ApplicationController
         @record = Record.new(param_record)
         @record.user_id = current_user.id
         if @record.save
-            redirect_to action: :index, :notice => 'Register saved!'
+            redirect_to action: :index, notice: 'Register saved!'
         else
             puts @record.errors.messages
             render :new
         end
     end
 
+    def edit
+        @record = Record.find(params[:id])
+    end
+
+    def update
+        @record = Record.find(params[:id])
+        if @record.update(param_record)
+            redirect_to action: :index, notice: 'Register updated!'
+        else
+            puts @record.errors.messages
+            render :index
+        end
+    end
+
     def destroy
         @record = Record.find(params[:id])
         @record.destroy
-        redirect_to records_path, :notice => 'Register deleted!'
+        redirect_to records_path, notice: 'Register deleted!'
     end
 
     def show
