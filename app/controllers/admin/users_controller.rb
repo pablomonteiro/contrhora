@@ -20,6 +20,20 @@ class Admin::UsersController < ApplicationController
         end
     end
 
+    def edit
+        @user = User.find(params[:id])
+    end
+
+    def update
+        @user = User.find(params[:id])
+        if @user.update(users_params)
+            redirect_to action: :index
+        else
+            puts @user.errors.messages
+            render :show
+        end
+    end
+
     def show 
         @user = User.find(params[:id])
     end
