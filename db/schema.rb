@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_181801) do
+ActiveRecord::Schema.define(version: 2020_05_29_001119) do
 
   create_table "records", force: :cascade do |t|
     t.string "project"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2020_05_17_181801) do
     t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "active", default: true
+    t.boolean "redefine_password", default: true
   end
 
   add_foreign_key "records", "users"

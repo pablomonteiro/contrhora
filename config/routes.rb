@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
     resources :records
     namespace :admin do
-      resources :users
+      resources :users do
+        patch 'activate', on: :member
+        patch 'deactivate', on: :member
+      end
       resources :records, only: [:index]
     end
     resources :user_sessions, :only => [:create, :new, :destroy]

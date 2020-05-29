@@ -3,8 +3,10 @@ class User < ApplicationRecord
     validates :admin, inclusion: { in: [ true, false ] }
     has_secure_password
 
+    scope :active_users, -> {where(active: true)}
+
     def self.authenticate(email, password)
-        User.find_by_email(email).try(:authenticate, password)
+        User.active_users.find_by_email(email).try(:authenticate, password)
     end
 
     def all_users

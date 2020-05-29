@@ -38,6 +38,26 @@ class Admin::UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def activate
+        @user = User.find(params[:id])
+        if @user.update(active: true)
+            redirect_to action: :index
+        else
+            puts @user.errors.messages
+            render :show
+        end
+    end
+
+    def deactivate
+        @user = User.find(params[:id])
+        if @user.update(active: false)
+            redirect_to action: :index
+        else
+            puts @user.errors.messages
+            render :show
+        end
+    end
+
     private 
 
     def users_params
