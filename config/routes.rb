@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     root 'home#index'
 
     resources :records
+    resources :users, only: [] do
+      get 'change_password', on: :member
+      patch 'update_password', on: :member
+    end
     namespace :admin do
       resources :users do
         patch 'activate', on: :member

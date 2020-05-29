@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2020_05_29_001119) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "active", default: true
-    t.boolean "redefine_password", default: true
   end
 
   add_foreign_key "records", "users"

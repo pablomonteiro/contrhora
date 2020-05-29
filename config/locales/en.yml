@@ -58,6 +58,8 @@ en:
         admin: 'Time Records'
 
   user:
+    change_password:
+      button: 'Change Password'
     new:
       menu: 'New Users'
     view:

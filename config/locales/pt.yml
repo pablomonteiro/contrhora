@@ -50,6 +50,8 @@ pt:
         admin: 'Time Registros'
 
   user:
+    change_password:
+      button: 'Alterar Senha'
     new:
       menu: 'Usuário'
       button: "Gravar"
