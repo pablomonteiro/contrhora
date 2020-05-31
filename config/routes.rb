@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '', to: redirect("/#{I18n.locale}")
+
   scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
 
     root 'home#index'
