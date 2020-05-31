@@ -30,6 +30,34 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    models:
+      record: "Records"
+    attributes:
+      record:
+        project: "Project"
+        requester: "Requester"
+        register: "Register"
+        issue: "Issue"
+        hour_in: "Hour In"
+        hour_out: "Hour Out"
+        comment: "Comment"
+      user:
+        name: "Name"
+        login: "Login"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
+        admin: "Admin"
+
+  activemodel:
+    errors:
+      models:
+        user_session:
+          attributes:
+            base:
+              invalid_login: "Invalid Login!"
+
   application:
     name: 'Contrhora'
 

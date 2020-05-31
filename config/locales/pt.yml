@@ -20,6 +20,14 @@ pt:
         password_confirmation: "Confirmação de Senha"
         admin: "Administrador"
 
+  activemodel:
+    errors:
+      models:
+        user_session:
+          attributes:
+            base:
+              invalid_login: "Login Inválido!"
+
   application:
     name: 'Contrhora'
 
