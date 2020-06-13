@@ -3,7 +3,9 @@ class RecordsController < ApplicationController
     before_action :require_authentication
 
     def index
+        @controller_name = params[:controller]
         @records = Record.of_user(current_user).this_month.register_desc
+        @total_spent_time = calc_total_spent_time
     end
 
     def new
@@ -49,6 +51,16 @@ class RecordsController < ApplicationController
 
     def param_record
         params.require(:record).permit(:project, :issue, :register, :comment, :hour_in, :hour_out, :requester, :user_id)
+    end
+
+    private 
+
+    def calc_total_spent_time
+        total = 0
+        @records.each do |record|
+            total += record.time_spent_number
+        end
+        total.divmod(60).join(':')
     end
 
 end

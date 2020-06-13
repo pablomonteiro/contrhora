@@ -70,3 +70,5 @@ pt:
       login: 'Login'
       email: 'Email'
       admin: 'Administrador'
+
+  total_spent_time: 'Total de Horas'

@@ -23,6 +23,10 @@ class Record < ApplicationRecord
     spent.divmod(60).join(':')
   end
 
+  def time_spent_number
+    time_to_minutes(time_spent)
+  end
+
   def self.to_csv(user_id)
     header = %w{User Project IssueDate Hour In Hour Out Requester Comment}
     attributes = %w{user_name project issue register hour_in hour_out requester comment}
