@@ -10,9 +10,11 @@ class Record < ApplicationRecord
     where(:user_id => user_id)
   end
 
-  def self.search_by_user(user_id)
-    if user_id.present?
-      of_user(user_id).register_desc
+  def self.search(user_search, date_ini, date_fin)
+    puts user_search.present? || (date_ini.present? && date_fin.present?) 
+    if user_search.present? || (date_ini.present? && date_fin.present?)
+      records = search_by_user(user_search)
+      search_by_date(records, date_ini, date_fin)
     else
       this_month.user_asc.register_desc
     end
@@ -48,6 +50,22 @@ class Record < ApplicationRecord
   def time_to_minutes(time)
     hour, minute = time.split(':').map(&:to_i)
     60 * hour + minute
+  end
+
+  def self.search_by_user(user_id)
+    if user_id.present?
+      records = of_user(user_id)
+    else
+      Record.all
+    end
+  end
+
+  def self.search_by_date(records, date_in, date_fin)
+    if date_in.present? && date_fin.present?
+      records.where("register BETWEEN ? AND ?", date_in, date_fin)
+    else
+      records
+    end
   end
 
 end

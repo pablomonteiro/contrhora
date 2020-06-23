@@ -4,8 +4,10 @@ class Admin::RecordsController < ApplicationController
 
     def index
         @controller_name = params[:controller]
-        user_search = params[:user_id]
-        @records = Record.search_by_user(user_search)
+        user_search = params[:user_id]    
+        date_ini = params[:date_ini]
+        date_fin = params[:date_fin]
+        @records = Record.search(user_search, date_ini, date_fin)
         @total_spent_time = calc_total_spent_time
         respond_to do |format|
             format.html

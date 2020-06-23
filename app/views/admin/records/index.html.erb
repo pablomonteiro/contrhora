@@ -1,13 +1,25 @@
 <div class="panel-body">
-    <div class = "form-actions">
-        <button id="export_csv" class="btn btn-success"><%=t('record.export.csv')%></button>
-    </div>
-    <%= form_for(admin_records_path, method: :get) do %>
+    <%= form_with url: admin_records_path, method: :get, remote: true do |form| %>
         <div class="form-group">
-            <div class="col-md-4">  
-                <%= select_tag("user_id", options_from_collection_for_select(User.all, "id", "name", params[:user_id].to_i), {include_blank: true}) %>
-                <%= submit_tag ("Search"), name: nil %>
-                
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <%= t 'filter.user' %>
+                    <%= form.collection_select :user, User.all, :id, :name, {include_blank: true} %>
+                </div>
+                <div class="col-md-5">
+                    <%= t 'filter.date.ini' %>
+                    <%= form.date_field :date_ini %>
+                    <%= t 'filter.date.fin' %>
+                    <%= form.date_field :date_fin %>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-4">
+                        <%= form.submit "Search" %>
+                    </div>
+                    <div class="col-md-4">
+                        <button id="export_csv" class="btn btn-success"><%=t('record.export.csv')%></button>
+                    </div>
+                </div>
             </div>
         </div>
     <% end %>
