@@ -16,7 +16,9 @@ Rails.application.routes.draw do
         patch 'activate', on: :member
         patch 'deactivate', on: :member
       end
-      resources :records, only: [:index]
+      resources :records, only: [:index] do
+        get 'search', to: 'records#search', on: :collection
+      end
     end
     resources :user_sessions, :only => [:create, :new, :destroy]
   end
