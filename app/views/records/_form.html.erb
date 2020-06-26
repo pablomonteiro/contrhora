@@ -1,0 +1,51 @@
+<div class="form-group">
+            <div class="col-md-4">
+                <%= f.label :project, :class => "col-md-4 control-label" %>
+                <%= f.select :project, ['Varejofacil', 'Milënio', 'SysPDV'], :class => "form-control"  %>
+            </div>
+            <div class="col-md-4">
+                <%= f.label :requester, :class => "col-md-4 control-label" %>
+                <%= f.select :requester, ['Cláudio', 'Elisane', 'Raymundo', 'Ricardo'], :class => "form-control"  %>
+            </div>
+            <div class="col-md-4">
+                <%= f.label :register, :class => "col-md-4 control-label" %>
+                <%= f.date_select :register, :order => [:day, :month, :year], :class => "form-control"%>
+            </div>
+        </div>
+
+        <div class="form-group">    
+            <div class="col-md-6">
+                <%= f.label :issue, :class => "col-md-2 control-label" %>
+                <%= f.text_field :issue, :class => "form-control" %>
+            </div>
+            <div class="col-md-3">
+                <%= f.label :hour_in, :class => "col-md-12 control-label" %>
+                <% if @record.new_record? %>
+                    <%= f.time_field :hour_in, value: "%H:%M", class: "form-control"%>
+                <% else %>
+                    <%= f.time_field :hour_in, value: "#{@record.hour_in}", class: "form-control" %>
+                <% end %>
+            </div>
+            <div class="col-md-3">
+                <%= f.label :hour_out, :class => "col-md-12 control-label" %>
+                <% if @record.new_record? %>
+                    <%= f.time_field :hour_out, value: "%H:%M", class: "form-control"%>
+                <% else %>
+                    <%= f.time_field :hour_out, value: "#{@record.hour_out}", class: "form-control" %>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <%= f.label :comment, :class => "col-md-2 control-label" %> 
+                <%= f.text_area :comment, :class => "form-control" %>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="row">
+            <div class = "form-action">
+                <%= f.submit t('record.new.button'), class: "btn btn-large btn-primary" %>
+            </div>
+        </div>
