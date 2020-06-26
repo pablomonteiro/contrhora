@@ -1,21 +1,41 @@
 <div class="panel-body">
-    <% if @session.errors.has_key? :base %>
-        <div data-alert class="alert-box alert radius">
-            <%= @session.errors[:base].join(',') %>
-            <a href="#" class="close">&times;</a>
+    <div class="container">
+        <div class="login form-group">
+            <% if @session.errors.has_key? :base %>
+                <div data-alert class="alert-box alert radius">
+                    <%= @session.errors[:base].join(',') %>
+                    <a href="#" class="close">&times;</a>
+                </div>
+            <% end %>
+            <%= form_for @session do |f| %>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="col-md-3 label-align-right">
+                            <%= f.label :email, :class => "control-label" %>
+                        </div>
+                        <div class="col-md-8">
+                            <%= f.text_field :email, :class => "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="col-md-3 label-align-right">
+                            <%= f.label :password, :class => "control-label" %>
+                        </div>
+                        <div class="col-md-8">
+                            <%= f.password_field :password, :class => "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="text-center">
+                        <div class = "form-actions">
+                            <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
         </div>
-    <% end %>
-    <%= form_for @session do |f| %>
-        <div class="col-md-12">
-            <%= f.label :email, :class => "col-md-2 control-label" %>
-            <%= f.text_field :email, :class => "col-md-6 form-control" %>
-        </div>
-        <div class="col-md-12">
-            <%= f.label :password, :class => "col-md-2 control-label" %>
-            <%= f.password_field :password, :class => "col-md-6 form-control" %>
-        </div>
-        <div class = "form-actions">
-            <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-        </div>
-    <% end %>
+    </div>
 </div>    
