@@ -1,9 +1,13 @@
 <% if user_signed_in? %>
-  <nav class="language">
-    <ul>
-      <li><%= link_to 'EN', root_path(locale: :en) %></li>
-      <span class="bar"></span>
-      <li><%= link_to 'PT', root_path(locale: :pt) %></li>
-    </ul>
-  </nav>
+  <div class="col-12">
+    <nav id="menu" class="language navbar navbar-expand-lg navbar-light">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul>
+          <li><%= link_to 'EN', root_path(locale: :en) %></li>
+          <span class="bar"></span>
+          <li><%= link_to 'PT', root_path(locale: :pt) %></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 <% end %>

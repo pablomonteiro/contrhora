@@ -1,3 +1,7 @@
+.card-header {
+    background-color: #3276b1;
+}
+
 // Menu
 .language {
     font-size: 10px;
@@ -6,15 +10,15 @@
     border-left: 1px solid #fff;
     height: 10px;
 }
-.language ul, .menu ul {
+.language ul {
     padding:0px;
     margin:0px;
     list-style:none;
 }
-.language ul li, .menu ul li { 
+.language ul li { 
     display: inline; 
 }
-.language ul li a, .menu ul li a {
+.language ul li a {
     padding: 2px 8px;
     display: inline-block;
     /* visual do link */
@@ -48,4 +52,8 @@
 .container .label-align-right {
     top: 10;
     text-align: right;
+}
+#radioBtn .notActive{
+    color: #3276b1;
+    background-color: #fff;
 }

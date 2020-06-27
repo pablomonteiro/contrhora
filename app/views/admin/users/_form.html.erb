@@ -1,0 +1,46 @@
+<div class="row mb-4 form-group">
+    <div class="col-12 input-group">
+        <div class="input-group-prepend ">
+            <label class="input-group-text">
+                <%= f.label :name %>
+            </label>
+        </div>
+        <%= f.text_field :name, class: "form-control"  %>
+    </div>
+</div>
+<div class="row mb-4 form-group">
+    <div class="col-6 input-group">
+        <div class="input-group-prepend ">
+            <label class="input-group-text">
+                <%= f.label :login %>
+            </label>
+        </div>
+        <%= f.text_field :login, :class => "form-control"  %>
+    </div>
+    <div class="col-6 input-group">
+        <div class="input-group-prepend ">
+            <label class="input-group-text">
+                <%= f.label :email %>
+            </label>
+        </div>
+        <%= f.text_field :email, :class => "form-control"  %>
+    </div>
+</div>
+
+<div class="row mb-4 form-group">
+    <div class="col-12 input-group">
+        <div class="input-group-prepend ">
+            <label class="input-group-text">
+                <%= f.label :admin %>
+            </label>
+        </div>
+        <div id="radioBtn" class="btn-group">
+            <a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="true"><%= t('user.new.admin.true') %></a>
+            <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="false"><%= t('user.new.admin.false') %></a>
+        </div>
+    </div>
+</div>
+<div class = "form-actions">
+    <%= f.submit t('user.new.button') , class: "btn btn-large btn-primary" %>
+    <%= link_to t('btn.cancel'), root_path %>
+</div>

@@ -1,33 +1,37 @@
-<div class="form-group">
-    <div class="col-md-4">
-        <%= f.label :project, class: "control-label" %>
-        <%= f.select :project, ['Varejofacil', 'Milënio', 'SysPDV'], class: "form-control selectpicker"  %>
+<div class="row mb-4">
+    <div class="col-4 input-group">
+        <div class="input-group-prepend">
+            <%= f.label :project, class: "input-group-text" %>
+        </div>
+        <%= f.select :project, ['Varejofacil', 'Milënio', 'SysPDV'], {}, {class:"custom-select"} %>
     </div>
-    <div class="col-md-4">
-        <%= f.label :requester, class: "control-label" %>
-        <%= f.select :requester, ['Cláudio', 'Elisane', 'Raymundo', 'Ricardo'], :class => "form-control"  %>
+    <div class="col-4 input-group">
+        <div class="input-group-prepend">
+            <%= f.label :requester, class: "input-group-text" %>
+        </div>
+        <%= f.select :requester, ['Cláudio', 'Elisane', 'Raymundo', 'Ricardo'], {}, {class:"custom-select"} %>
     </div>
-    <div class="col-md-4">
-        <%= f.label :register, class: "control-label" %>
+    <div class="col-4 input-group">
+        <%= f.label :register, class: "input-group-text" %>
         <%= f.date_field :register, class: "form-control"%>
     </div>
 </div>
 
-<div class="form-group">    
-    <div class="col-md-6">
-        <%= f.label :issue, class: "control-label" %>
+<div class="row mb-4">    
+    <div class="col-4 input-group">
+        <%= f.label :issue, class: "input-group-text" %>
         <%= f.text_field :issue, class: "form-control" %>
     </div>
-    <div class="col-md-3">
-        <%= f.label :hour_in, class: "control-label" %>
+    <div class="col-4 input-group">
+        <%= f.label :hour_in, class: "input-group-text" %>
         <% if @record.new_record? %>
             <%= f.time_field :hour_in, value: "%H:%M", class: "form-control"%>
         <% else %>
             <%= f.time_field :hour_in, value: "#{@record.hour_in}", class: "form-control" %>
         <% end %>
     </div>
-    <div class="col-md-3">
-        <%= f.label :hour_out, :class => "control-label" %>
+    <div class="col-4 input-group">
+        <%= f.label :hour_out, :class => "input-group-text" %>
         <% if @record.new_record? %>
             <%= f.time_field :hour_out, value: "%H:%M", class: "form-control"%>
         <% else %>
@@ -36,16 +40,17 @@
     </div>
 </div>
 
-<div class="form-group">
-    <div class="col-md-12">
-        <%= f.label :comment, class: "control-label" %> 
+<div class="row mb-4">
+    <div class="col-12 input-group">
+        <%= f.label :comment, class: "input-group-text" %> 
         <%= f.text_area :comment, class: "form-control" %>
     </div>
 </div>
 
 <!-- Button (Double) -->
 <div class="row">
-    <div class = "form-action">
-        <%= f.submit t('record.new.button'), class: "btn btn-large btn-primary" %>
+    <div class="col text-center">
+        <%= f.submit t('record.new.button'), class: "btn btn-primary" %>
+        <%= link_to t('btn.cancel'), root_path %>
     </div>
 </div>

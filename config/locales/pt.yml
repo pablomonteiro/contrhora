@@ -63,6 +63,9 @@ pt:
     new:
       menu: 'Usuário'
       button: "Gravar"
+      admin: 
+        true: 'Sim'
+        false: 'Não'
     view:
       menu: 'Usuários'
     label:
@@ -70,5 +73,8 @@ pt:
       login: 'Login'
       email: 'Email'
       admin: 'Administrador'
+
+  button:
+    cancel: 'Cancelar'
 
   total_spent_time: 'Total de Horas'

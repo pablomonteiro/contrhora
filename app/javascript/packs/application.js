@@ -15,6 +15,8 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 require("admin/records")
+require("admin/user")
 
 import Rails from "@rails/ujs";
 window.Rails = Rails;
+

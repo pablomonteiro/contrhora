@@ -1,31 +1,31 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <head>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag 'application' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
     <fieldset>
-        <div class="panel panel-primary">
-            <div class="panel-heading">
+        <div class="card">
+            <div class="card-header">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-2">
                         <h4><%= t 'application.name'%></h4>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-5">
                         <%= render "/layouts/menu" %>
                     </div>
-                    <div class="col-md-3">
-                        <div class="col-md-5">
+                    <div class="col-2">
                             <%= render "/layouts/language" %>
-                        </div>
-                        <div class="col-md-7">
-                            <%= render "/layouts/logout" %>
-                        </div>
+                    </div>
+                    <div class="col-3">
+                        <%= render "/layouts/logout" %>
+                    </div>
                     </div>
                 </div>
             </div>
-            <%= yield %>
+            <div class="card-body">
+                <%= yield %>
+            </div>
         </div>
     </fieldset>
 </body>

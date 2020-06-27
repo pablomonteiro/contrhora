@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
     <div class="text-center logout">
-            <div class="col-md-12">
+            <div class="col-12">
                 <p> <%= current_user.name %> </p>
             </div>
-            <div class="col-md-12">
+            <div class="col-12">
                 <%= link_to t('layout.change_password'), change_password_user_path(locale, current_user.id) %>
             </div>
-            <div class="col-md-12">
+            <div class="col-12">
                 <%= link_to t('layout.signout'), user_session_path(locale, current_user.id), method: :delete %>
             </div>
     </div>

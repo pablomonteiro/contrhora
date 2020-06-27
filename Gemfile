@@ -28,6 +28,9 @@ gem 'jquery-rails'
 # Include I18n gem
 gem 'rails-i18n'
 
+# Include bootstrap gem
+gem 'bootstrap', '~> 4.0.0' 
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -1,14 +1,28 @@
 <% if user_signed_in? %>
-    <nav id="menu" class="menu">
-        <ul>
-            <li><%= link_to t('home.menu'), root_path %></li>
-            <li><%= link_to t('record.view.menu.my'), records_path %></li>
-            <li><%= link_to t('record.new.menu'), new_record_path %></li>
-            <% if user_admin? %>
-                <li><%= link_to t('record.view.menu.admin'), admin_records_path %></li>
-                <li><%= link_to t('user.new.menu'), new_admin_user_path %></li>
-                <li><%= link_to t('user.view.menu'), admin_users_path %></li>
-            <% end %>
-        </ul>
+    <nav id="menu" class="navbar navbar-expand-lg navbar-light">
+        <div class="collapse navbar-collapse" id="menu-itens">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <%= link_to t('home.menu'), root_path, class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to t('record.view.menu.my'), records_path, class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to t('record.new.menu'), new_record_path, class:"nav-link" %>
+                </li>
+                <% if user_admin? %>
+                    <li class="nav-item">
+                        <%= link_to t('record.view.menu.admin'), admin_records_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to t('user.new.menu'), new_admin_user_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to t('user.view.menu'), admin_users_path, class:"nav-link" %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>    
     </nav>
 <% end %>

@@ -90,6 +90,10 @@ en:
       button: 'Change Password'
     new:
       menu: 'New Users'
+      button: "Save"
+      admin: 
+        true: 'Yes'
+        false: 'No'
     view:
       menu: 'Users'
     label:
@@ -97,6 +101,9 @@ en:
       login: 'Login'
       email: 'Email'
       admin: 'Administrator'
+  
+  button:
+    cancel: 'Cancel'
   
   total_spent_time: 'Total Spent Time'
   

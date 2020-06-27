@@ -1,6 +1,6 @@
-<div class="panel-body">
+<div class="card-body">
     <div class="container">
-        <div class="login form-group">
+        <div class="form-group">
             <% if @session.errors.has_key? :base %>
                 <div data-alert class="alert-box alert radius">
                     <%= @session.errors[:base].join(',') %>
@@ -9,30 +9,28 @@
             <% end %>
             <%= form_for @session do |f| %>
                 <div class="row form-group">
-                    <div class="col-md-12">
-                        <div class="col-md-3 label-align-right">
-                            <%= f.label :email, :class => "control-label" %>
+                    <div class="col-12 input-group">
+                        <div class="input-group-prepend ">
+                            <label class="input-group-text">
+                                <%= f.label :email, :class => "control-label" %>
+                            </label>
                         </div>
-                        <div class="col-md-8">
-                            <%= f.text_field :email, :class => "form-control" %>
-                        </div>
+                        <%= f.text_field :email, :class => "form-control" %>
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-md-12">
-                        <div class="col-md-3 label-align-right">
-                            <%= f.label :password, :class => "control-label" %>
+                    <div class="col-12 input-group">
+                        <div class="input-group-prepend ">
+                            <label class="input-group-text">
+                                <%= f.label :password, :class => "control-label" %>
+                            </label>
                         </div>
-                        <div class="col-md-8">
-                            <%= f.password_field :password, :class => "form-control" %>
-                        </div>
+                        <%= f.password_field :password, :class => "form-control" %>
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="text-center">
-                        <div class = "form-actions">
-                            <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-                        </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <%= f.submit "Sign in", class: "btn btn-primary" %>
                     </div>
                 </div>
             <% end %>
