@@ -68,13 +68,17 @@ en:
     signout: 'Sign Out'
 
   record:
-    export:
-      csv: 'Export CSV'
     label:
       title: 'Records'
       project: 'Project'
       issue: 'Task'
       register: 'Date'
+      user: "User"
+      time_spent: "Time spent"
+      hour_in: "Hour In"
+      hour_out: "Hour Out"
+      comment: "Comment"
+      requester: 'Requester'
     new:
       menu: 'New Record'
       button: 'Save Record'
@@ -106,4 +110,14 @@ en:
     cancel: 'Cancel'
   
   total_spent_time: 'Total Spent Time'
+
+  records:
+    filter:
+      user: 'User'
+      date:
+        ini: 'Initial'
+        fin: 'Final'
+      export:
+        csv: 'Export CSV'
+      search: 'Search'
   

@@ -38,8 +38,6 @@ pt:
     signout: 'Sair'
 
   record:
-    export:
-      csv: 'Exportar CSV'
     label:
       title: 'Registros'
       project: 'Projeto'
@@ -47,6 +45,10 @@ pt:
       register: 'Data'
       user: "Usuário"
       time_spent: "Tempo Gasto"
+      hour_in: "Início"
+      hour_out: "Término"
+      comment: "O que foi feito"
+      requester: 'Solicitante'
     new:
       menu: 'Registrar'
       button: 'Gravar'
@@ -78,3 +80,13 @@ pt:
     cancel: 'Cancelar'
 
   total_spent_time: 'Total de Horas'
+
+  records:
+    filter:
+      user: 'Usuário'
+      date:
+        ini: 'Inicial'
+        fin: 'Final'
+      export:
+        csv: 'Exportar CSV'
+      search: 'Pesquisar'

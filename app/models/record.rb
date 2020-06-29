@@ -29,13 +29,13 @@ class Record < ApplicationRecord
     time_to_minutes(time_spent)
   end
 
-  def self.to_csv(user_id)
+  def self.to_csv(user_id, date_ini, date_fin)
     header = %w{User Project IssueDate Hour In Hour Out Requester Comment}
     attributes = %w{user_name project issue register hour_in hour_out requester comment}
     options = {headers: true, col_sep: ';'}
     CSV.generate(options) do |csv|
       csv << header
-      self.search_by_user(user_id).each do |record|
+      self.search(user_id, date_ini, date_fin).each do |record|
         csv << attributes.map{ |attr| record.send(attr) }
       end
     end

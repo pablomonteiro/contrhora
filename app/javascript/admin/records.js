@@ -1,8 +1,14 @@
 $(document).ready(function() {
     $("#export_csv").click(function() {
-        var user_id = "";
-        if($("#user_id").val())
-            user_id = "?user_id="+$("#user_id").val();
-        location.href = "/admin/records.csv"+user_id
+        var q = "";
+        if($("#user").val())
+            q = "?user="+$("#user").val();
+        if($("#date_ini").val() && $("#date_fin").val())
+            var dates = "date_ini="+$("#date_ini").val()+"&date_fin="+$("#date_fin").val();
+            if(q)
+                q += "&"+dates;
+            else
+                q = "?"+dates;
+        location.href = "/"+$("#locale").val()+"/admin/records.csv"+q
     })
 })

@@ -4,7 +4,7 @@
             <div class="col-3 input-group ">
                 <div class="input-group-prepend ">
                     <label class="input-group-text">
-                        <%= t 'filter.user' %>
+                        <%= t 'records.filter.user' %>
                     </label>
                 </div>
                 <%= form.collection_select :user, User.all, :id, :name, {include_blank: true}, {class:"custom-select, form-control"} %>
@@ -12,23 +12,23 @@
             <div class="col-6 input-group">
                 <div class="input-group-prepend">
                     <label class="input-group-text">
-                        <%= t 'filter.date.ini' %>
+                        <%= t 'records.filter.date.ini' %>
                     </label>
                 </div>
                 <%= form.date_field :date_ini, class: "form-control" %>
                 <div class="input-group-prepend">
                     <label class="input-group-text">
-                        <%= t 'filter.date.fin' %>
+                        <%= t 'records.filter.date.fin' %>
                     </label>
                 </div>
                 <%= form.date_field :date_fin, class: "form-control" %>
             </div>
             <div class="col-3 input-group">
-                <div class="col-4">
-                    <%= form.submit "Search", class: "btn btn-success" %>
+                <div class="col-5">
+                    <%= form.submit t('records.filter.search'), class: "btn btn-success" %>
                 </div>
-                <div class="col-4">
-                    <button id="export_csv" class="btn btn-outline-info"><%=t('record.export.csv')%></button>
+                <div class="col-5">
+                    <button id="export_csv" class="btn btn-outline-info"><%=t('records.filter.export.csv')%></button>
                 </div>
             </div>
         </div>
