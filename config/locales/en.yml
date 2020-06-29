@@ -105,9 +105,14 @@ en:
       login: 'Login'
       email: 'Email'
       admin: 'Administrator'
+      active: 'Active'
   
   button:
     cancel: 'Cancel'
+    back: 'Back'
+    edit: 'Edit'
+    deactivate: 'Deactivate'
+    activate: 'Activate'
   
   total_spent_time: 'Total Spent Time'
 

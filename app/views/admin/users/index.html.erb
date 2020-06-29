@@ -18,11 +18,11 @@
                         <td><%= user.email %></td>
                         <td><%= user.admin %></td>
                         <td><%= user.active %></td>
-                        <td><%= link_to 'Edit', edit_admin_user_path(locale, user) %></td>
+                        <td><%= link_to t('button.edit'), edit_admin_user_path(locale, user) %></td>
                         <% if user.active %>
-                            <td><%= link_to('Deactive', deactivate_admin_user_path(locale, user), method: :patch) %></td>
+                            <td><%= link_to t('button.deactivate'), deactivate_admin_user_path(locale, user), method: :patch %></td>
                         <% else %>
-                            <td><%= link_to('Active', activate_admin_user_path(locale, user), method: :patch) %></td>
+                            <td><%= link_to t('button.activate'), activate_admin_user_path(locale, user), method: :patch %></td>
                         <% end %>
                     </tr>
                 <% end %>

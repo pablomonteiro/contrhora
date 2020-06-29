@@ -34,13 +34,12 @@
                 <%= f.label :admin %>
             </label>
         </div>
-        <div id="radioBtn" class="btn-group">
-            <a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="true"><%= t('user.new.admin.true') %></a>
-            <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="false"><%= t('user.new.admin.false') %></a>
-        </div>
+        <%= f.check_box :admin %>
     </div>
 </div>
-<div class = "form-actions">
-    <%= f.submit t('user.new.button') , class: "btn btn-large btn-primary" %>
-    <%= link_to t('btn.cancel'), root_path %>
+<div class="row">
+    <div class = "col text-center">
+        <%= f.submit t('user.new.button') , class: "btn btn-large btn-primary" %>
+        <%= link_to t('btn.cancel'), admin_users_path %>
+    </div>
 </div>

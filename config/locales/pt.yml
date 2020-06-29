@@ -75,9 +75,14 @@ pt:
       login: 'Login'
       email: 'Email'
       admin: 'Administrador'
+      active: 'Ativo'
 
   button:
     cancel: 'Cancelar'
+    back: 'Voltar'
+    edit: 'Editar'
+    deactivate: 'Desativar'
+    activate: 'Ativar'
 
   total_spent_time: 'Total de Horas'
 

@@ -12,6 +12,7 @@ class Admin::UsersController < ApplicationController
 
     def create
         @user = User.new(users_params)
+        define_default_password
         if @user.save
             redirect_to action: :new, :notice => 'User saved!'
         else
@@ -62,6 +63,12 @@ class Admin::UsersController < ApplicationController
 
     def users_params
         params.require(:user).permit(:name, :login, :email, :password, :password_confirmation, :admin)
+    end
+
+    def define_default_password
+        default_password = '123'
+        @user.password = default_password
+        @user.password_confirmation = default_password
     end
 
 end
