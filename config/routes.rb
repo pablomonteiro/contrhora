@@ -20,7 +20,7 @@ Rails.application.routes.draw do
         get 'search', to: 'records#search', on: :collection
       end
     end
-    resources :user_sessions, :only => [:create, :new, :destroy]
+    resources :user_sessions, :only => [:create, :index, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -4,11 +4,11 @@ class UserSessionsController < ApplicationController
         if @session.authenticate
             redirect_to root_path, :notice => t('flash.notice.signed_id')
         else
-            render :new
+            render :index
         end
     end
 
-    def new
+    def index
         @session = UserSession.new(session)
     end
 
