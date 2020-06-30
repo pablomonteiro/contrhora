@@ -1,5 +1,16 @@
-<div class="panel-body">
+<div class="card-body">
     <div class="container">
+        <% if @user.errors.any? %>
+            <div class="alert alert-danger">
+                <ul>
+                    <% @user.errors.each do |error| %>
+                        <li>
+                        <%= error %> : <%= @user.errors[error] %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
         <%= form_for [:admin, @user] do |form| %>
             <%= render 'admin/users/form', f: form %>
         <% end %>
