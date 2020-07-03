@@ -124,5 +124,12 @@ en:
         fin: 'Final'
       export:
         csv: 'Export CSV'
+      import:
+        csv: 'Import CSV'
       search: 'Search'
+    modal:
+      import:
+        title: 'Import Records'
+        file: 'Import'
+        close: 'Close'
   

@@ -1,3 +1,5 @@
+require 'csv'
+
 class Record < ApplicationRecord
   belongs_to :user
   validates_presence_of :project, :issue, :comment, :register, :hour_in, :hour_out, :requester, :user_id
@@ -30,7 +32,7 @@ class Record < ApplicationRecord
   end
 
   def self.to_csv(user_id, date_ini, date_fin)
-    header = %w{User Project IssueDate Hour In Hour Out Requester Comment}
+    header = %w{User Project Issue Date HourIn HourOut Requester Comment}
     attributes = %w{user_name project issue register hour_in hour_out requester comment}
     options = {headers: true, col_sep: ';'}
     CSV.generate(options) do |csv|
@@ -43,6 +45,11 @@ class Record < ApplicationRecord
 
   def user_name
     self.user.name
+  end
+
+  def self.import_csv(csv)
+    puts csv[0]['User']
+    puts t[0]['Hour_Out']
   end
 
   private 

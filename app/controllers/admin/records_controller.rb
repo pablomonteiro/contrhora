@@ -3,20 +3,28 @@ class Admin::RecordsController < ApplicationController
     before_action :require_authentication
 
     def index
-        seach_records
+        search_records
         respond_to do |format|
             format.html
-            format.csv { send_data @records.to_csv(user_id, date_ini, date_fin), filename: "records-#{Date.today}.csv" }
+            format.csv { send_data @records.to_csv(nil, nil, nil), filename: "records-#{Date.today}.csv" }
         end
     end
 
     def search
-        seach_records
+        search_records
+    end
+
+    def import
+        puts params
+        file = params['file_upload']
+        csv_file = CSV.parse(File.read(file.path), headers: true, col_sep: ';')
+        Record.import_csv(csv_file)
+        
     end
 
     private 
 
-    def seach_records
+    def search_records
         @controller_name = params[:controller]
         user_id = params[:user]    
         date_ini = params[:date_ini]

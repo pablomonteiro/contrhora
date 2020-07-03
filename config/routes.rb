@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       end
       resources :records, only: [:index] do
         get 'search', to: 'records#search', on: :collection
+        post 'import', to: 'records#import', on: :collection
       end
     end
     resources :user_sessions, :only => [:create, :index, :destroy]

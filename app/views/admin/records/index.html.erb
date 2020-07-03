@@ -9,7 +9,7 @@
                 </div>
                 <%= form.collection_select :user, User.all, :id, :name, {include_blank: true}, {class:"custom-select, form-control"} %>
             </div>
-            <div class="col-6 input-group">
+            <div class="col-5 input-group">
                 <div class="input-group-prepend">
                     <label class="input-group-text">
                         <%= t 'records.filter.date.ini' %>
@@ -23,17 +23,27 @@
                 </div>
                 <%= form.date_field :date_fin, class: "form-control" %>
             </div>
-            <div class="col-3 input-group">
-                <div class="col-5">
-                    <%= form.submit t('records.filter.search'), class: "btn btn-success" %>
+            <div class="col-4 input-group">
+                <div class="col-3">
+                    <%= form.submit t('records.filter.search'), class: "btn btn-success btn-sm" %>
                 </div>
-                <div class="col-5">
-                    <button id="export_csv" class="btn btn-outline-info"><%=t('records.filter.export.csv')%></button>
+                <div class="col-4">
+                    <button id="export_csv" class="btn btn-outline-info btn-sm"><%=t('records.filter.export.csv')%></button>
+                </div>
+                <div class="col-4">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modalImportCsv">
+                        <%=t('records.filter.import.csv')%>
+                    </button>
                 </div>
             </div>
         </div>
     <% end %>
+    
     <div id="grid_records_div">
         <%= render "grid_records" %>
     </div>
+
+    <%= render "modal_import_csv" %>
+
 </div>

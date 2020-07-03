@@ -94,4 +94,11 @@ pt:
         fin: 'Final'
       export:
         csv: 'Exportar CSV'
+      import:
+        csv: 'Importar CSV'
       search: 'Pesquisar'
+    modal:
+      import:
+        title: 'Importar Registros'
+        file: 'Importar'
+        close: 'Fechar'

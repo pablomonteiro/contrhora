@@ -17,6 +17,8 @@ require("channels")
 require("admin/records")
 require("admin/user")
 
+import "bootstrap";
+
 import Rails from "@rails/ujs";
 window.Rails = Rails;
 
