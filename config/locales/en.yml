@@ -79,6 +79,11 @@ en:
       hour_out: "Hour Out"
       comment: "Comment"
       requester: 'Requester'
+    menu:
+      label: 'Records'
+      new_item: 'New Record'
+      list_item: 'My Records'
+      list_admin_item: 'Time Records'
     new:
       menu: 'New Record'
       button: 'Save Record'
@@ -92,6 +97,10 @@ en:
   user:
     change_password:
       button: 'Change Password'
+    menu:
+      label: 'User'
+      new_item: 'New User'
+      list_item: 'All Users'
     new:
       menu: 'New Users'
       button: "Save"

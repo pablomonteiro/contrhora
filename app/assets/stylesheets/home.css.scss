@@ -30,11 +30,10 @@
 }
 .logout a {
     font-size: 12px;
-    color: #ccc;
+    color: #444;
     text-decoration: none;
 }
-.logout p {
-    font-size: 13px;
+.logout label {
     color: #fff;
 }
 .container {
@@ -63,4 +62,8 @@
     margin-top: auto;
     margin-left: 10px;
     font-weight: bold;
+}
+
+.menu .btn {
+    border: 1px transparent;
 }

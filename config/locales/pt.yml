@@ -49,19 +49,24 @@ pt:
       hour_out: "Término"
       comment: "O que foi feito"
       requester: 'Solicitante'
+    menu:
+      label: 'Registros'
+      new_item: 'Novo Registros'
+      list_item: 'Meus Registros'
+      list_admin_item: 'Registros do Time'
     new:
-      menu: 'Registrar'
       button: 'Gravar'
+      cancel: 'Cancelar'
     show:
       title: 'Registro'
-    view: 
-      menu: 
-        my: 'Meus Registros'
-        admin: 'Time Registros'
 
   user:
     change_password:
       button: 'Alterar Senha'
+    menu:
+      label: 'Usuário'
+      new_item: 'Novo'
+      list_item: 'Todos os Usuários'
     new:
       menu: 'Usuário'
       button: "Gravar"

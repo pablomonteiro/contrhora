@@ -1,13 +1,13 @@
 <% if user_signed_in? %>
-    <div class="text-center logout">
-            <div class="col-12">
-                <p> <%= current_user.name %> </p>
+    <div class="menu">
+        <div class="dropdown logout">
+            <button type="button" class="btn btn-outline-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.name %>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to t('layout.change_password'), change_password_user_path(locale, current_user.id), class: 'dropdown-item' %>
+                <%= link_to t('layout.signout'), user_session_path(locale, current_user.id), class: 'dropdown-item', method: :delete %>
             </div>
-            <div class="col-12">
-                <%= link_to t('layout.change_password'), change_password_user_path(locale, current_user.id) %>
-            </div>
-            <div class="col-12">
-                <%= link_to t('layout.signout'), user_session_path(locale, current_user.id), method: :delete %>
-            </div>
+        </div>
     </div>
 <% end %>
