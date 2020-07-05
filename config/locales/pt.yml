@@ -102,6 +102,8 @@ pt:
       import:
         csv: 'Importar CSV'
       search: 'Pesquisar'
+    errors:
+      title: 'Problema ao importar arquivo CSV'
     modal:
       import:
         title: 'Importar Registros'

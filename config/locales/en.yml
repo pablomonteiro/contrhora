@@ -136,6 +136,8 @@ en:
       import:
         csv: 'Import CSV'
       search: 'Search'
+    errors:
+      title: 'Problems on import csv file'
     modal:
       import:
         title: 'Import Records'

@@ -4,7 +4,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <p>Problems on import csv file </p>
+            <p><%= t('records.errors.title') %></p>
             <ul>
                 <% flash[:messages].each do |error| %>
                     <li>
