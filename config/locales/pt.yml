@@ -102,3 +102,6 @@ pt:
         title: 'Importar Registros'
         file: 'Importar'
         close: 'Fechar'
+        info:
+          title: 'Instruções para upload de arquivo CSV'
+          content: '<b>Cabeçalho</b><br><p>User;Project;Issue;Date;HourIn;HourOut;Requester;Comment</p><br><b>Linha</b><br><ul><li>Usuário(nome) deve existir</li><li>Hora(entrada/saída) no padrão hh:mm</li></ul>'

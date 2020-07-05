@@ -132,4 +132,7 @@ en:
         title: 'Import Records'
         file: 'Import'
         close: 'Close'
+        info:
+          title: 'Instructions for CSV upload file'
+          content: '<b>Header</b><br><p>User;Project;Issue;Date;HourIn;HourOut;Requester;Comment</p><br><b>Row</b><br><ul><li>User(name) need exist</li><li>Hour Pattern(in/out) is hh:mm</li></ul>'
   

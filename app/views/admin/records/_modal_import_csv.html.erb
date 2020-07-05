@@ -1,15 +1,25 @@
 <!-- Modal -->
 <div class="modal fade" id="modalImportCsv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog mw-100 w-75" role="document">
         <div class="modal-content">
             <%= form_with url: import_admin_records_path, method: :post, remote: true do |form| %>
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalImportCsv"><%=t('records.modal.import.title')%></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <p>
+                        <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseInfoCSVImport" aria-expanded="false" aria-controls="collapseInfoCSVImport">
+                            <%= t('records.modal.import.info.title') %>
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseInfoCSVImport">
+                        <div class="card card-body">
+                            <%= t('records.modal.import.info.content').html_safe %>
+                        </div>
+                    </div>
                     <%= form.file_field("file_upload", accept: 'text/csv') %><br />
                 </div>
                 <div class="modal-footer">

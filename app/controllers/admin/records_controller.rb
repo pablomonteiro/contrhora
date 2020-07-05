@@ -21,7 +21,8 @@ class Admin::RecordsController < ApplicationController
         if response["imported"]
             redirect_to action: :index
         else
-            puts response["errors"]
+            flash[:messages] = response["errors"]
+            redirect_to action: :index
         end
     end
 

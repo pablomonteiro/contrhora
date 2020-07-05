@@ -15,7 +15,6 @@ class Record < ApplicationRecord
   end
 
   def self.search(user_search, date_ini, date_fin)
-    puts user_search.present? || (date_ini.present? && date_fin.present?) 
     if user_search.present? || (date_ini.present? && date_fin.present?)
       records = search_by_user(user_search)
       search_by_date(records, date_ini, date_fin)
