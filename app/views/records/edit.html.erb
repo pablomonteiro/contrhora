@@ -1,5 +1,19 @@
-<div class="panel-body">
+<div class="card-body">
     <div class="container">
+        <% if @record.errors.any? %>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <ul>
+                    <% @record.errors.each do |error| %>
+                        <li>
+                        <%= error %> : <%= @record.errors[error] %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
         <%= form_for @record, url: record_path(I18n.locale, @record)  do |form| %>
             <%= render 'records/form', f: form %>
         <% end %>

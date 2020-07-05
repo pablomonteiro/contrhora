@@ -33,7 +33,7 @@ class RecordsController < ApplicationController
             redirect_to action: :index, notice: 'Register updated!'
         else
             puts @record.errors.messages
-            render :index
+            render :edit
         end
     end
 
