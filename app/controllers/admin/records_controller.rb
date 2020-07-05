@@ -15,11 +15,14 @@ class Admin::RecordsController < ApplicationController
     end
 
     def import
-        puts params
         file = params['file_upload']
         csv_file = CSV.parse(File.read(file.path), headers: true, col_sep: ';')
-        Record.import_csv(csv_file)
-        
+        response = Record.import_csv(csv_file)
+        if response["imported"]
+            redirect_to action: :index
+        else
+            puts response["errors"]
+        end
     end
 
     private 

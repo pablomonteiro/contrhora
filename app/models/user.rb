@@ -13,4 +13,8 @@ class User < ApplicationRecord
         User.all
     end
 
+    def self.find_user_by_name(name)
+        User.active_users.find_by_name(name)
+    end
+
 end

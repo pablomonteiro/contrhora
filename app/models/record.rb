@@ -1,4 +1,5 @@
 require 'csv'
+require 'json'
 
 class Record < ApplicationRecord
   belongs_to :user
@@ -7,6 +8,7 @@ class Record < ApplicationRecord
   scope :this_month, -> { where("register BETWEEN ? AND ?", Date.current.beginning_of_month, Date.current.end_of_month)}
   scope :user_asc, -> { order('user_id ASC') }
   scope :register_desc, -> { order('register DESC') }
+  scope :record_existent, ->(record) {where("project = ? AND issue = ? AND register = ? AND hour_in = ? AND hour_out = ?", record.project, record.issue, record.register, record.hour_in, record.hour_out)}
 
   def self.of_user(user_id)
     where(:user_id => user_id)
@@ -48,31 +50,62 @@ class Record < ApplicationRecord
   end
 
   def self.import_csv(csv)
-    puts csv[0]['User']
-    puts t[0]['Hour_Out']
+    imported = true
+    errors = Array.new
+    csv.each do |row|
+      user_name = row['User']
+      user = User.find_user_by_name(user_name)
+      if user.present?
+        record = csv_record(row)
+        record.user = user
+        record_existent = record_existent(record)
+        unless record_existent.present?
+          unless record.save
+            imported = false
+            errors.push(record.errors.messages)
+          end
+        end
+      else
+        imported = false
+        errors.push('user not found')
+      end
+    end
+    JSON.parse('{"imported":' + imported.to_s + ', "errors": ' + errors.to_json + '}')
   end
 
   private 
 
-  def time_to_minutes(time)
-    hour, minute = time.split(':').map(&:to_i)
-    60 * hour + minute
-  end
-
-  def self.search_by_user(user_id)
-    if user_id.present?
-      records = of_user(user_id)
-    else
-      Record.all
+    def time_to_minutes(time)
+      hour, minute = time.split(':').map(&:to_i)
+      60 * hour + minute
     end
-  end
 
-  def self.search_by_date(records, date_in, date_fin)
-    if date_in.present? && date_fin.present?
-      records.where("register BETWEEN ? AND ?", date_in, date_fin)
-    else
-      records
+    def self.search_by_user(user_id)
+      if user_id.present?
+        records = of_user(user_id)
+      else
+        Record.all
+      end
     end
-  end
+
+    def self.search_by_date(records, date_in, date_fin)
+      if date_in.present? && date_fin.present?
+        records.where("register BETWEEN ? AND ?", date_in, date_fin)
+      else
+        records
+      end
+    end
+
+    def self.csv_record(csv)
+      record = Record.new
+      record.project = csv['Project']
+      record.issue = csv['Issue']
+      record.register = csv['Date']
+      record.hour_in = csv['HourIn']
+      record.hour_out = csv['HourOut']
+      record.requester = csv['Requester']
+      record.comment = csv['Comment']
+      record
+    end
 
 end
