@@ -36,6 +36,7 @@ pt:
 
   layout:
     signout: 'Sair'
+    change_password: 'Alterar Senha'
 
   record:
     label:
@@ -62,7 +63,7 @@ pt:
 
   user:
     change_password:
-      button: 'Alterar Senha'
+        button: 'Save'
     menu:
       label: 'Usuário'
       new_item: 'Novo'

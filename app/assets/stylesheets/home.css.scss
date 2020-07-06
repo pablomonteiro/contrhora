@@ -2,14 +2,6 @@
     background-color: #3276b1;
 }
 
-// Menu
-.language {
-    font-size: 10px;
-}
-.language .bar {
-    border-left: 1px solid #fff;
-    height: 10px;
-}
 .language ul {
     padding:0px;
     margin:0px;
@@ -28,6 +20,12 @@
 .language ul li a {
     color: #fff
 }
+
+// Menu
+.language {
+    font-size: 10px;
+}
+
 .logout a {
     font-size: 12px;
     color: #444;
@@ -42,26 +40,33 @@
     height: 75%;
     position: relative;
 }
-.container .login {
-    width: 80%;
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+.container-login {
+    background-color: rgb(243, 243, 243);
+    width: 100%;
+    height: 100%;
 }
+
+.container-login-background {
+    //background-color:rgb(212, 212, 212);
+    width: 60%;
+    margin-top: 8%;
+}
+
+.container-login-content {
+    background-color: #fff;
+    width: 100%;
+    margin: 1%;
+}
+
+.container-login-title {
+    margin-bottom: 5%;
+    text-align: center;
+}
+
 .container .label-align-right {
     top: 10;
     text-align: right;
-}
-#radioBtn .notActive{
-    color: #3276b1;
-    background-color: #fff;
-}
-
-.label-output {
-    margin-top: auto;
-    margin-left: 10px;
-    font-weight: bold;
 }
 
 .menu .btn {

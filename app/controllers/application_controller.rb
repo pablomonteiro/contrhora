@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
     delegate :all_users, :to => :user
     helper_method :current_user, :user_signed_in?, :user_admin?, :all_users
     before_action :set_locale
+    layout :default_layout
 
     def user_session
         UserSession.new(session)
@@ -38,5 +39,9 @@ class ApplicationController < ActionController::Base
 
     def default_url_option
         { locale: I18n.locale }
+    end
+
+    def default_layout
+        is_a?(UserSessionsController) ? false : "application"
     end
 end

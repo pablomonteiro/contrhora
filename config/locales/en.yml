@@ -66,6 +66,7 @@ en:
 
   layout:
     signout: 'Sign Out'
+    change_password: 'Change Password'
 
   record:
     label:
@@ -96,7 +97,7 @@ en:
 
   user:
     change_password:
-      button: 'Change Password'
+      button: 'Save'
     menu:
       label: 'User'
       new_item: 'New User'

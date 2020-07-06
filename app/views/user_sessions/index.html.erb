@@ -1,39 +1,54 @@
-<div class="card-body">
-    <div class="container">
-        <div class="form-group">
-            <% if @session.errors.has_key? :base %>
-                <div class="alert alert-danger" role="alert">
-                    <%= @session.errors[:base].join(',') %>
-                    <a href="" class="close">&times;</a>
-                </div>
-            <% end %>
-            <%= form_for @session do |f| %>
-                <div class="row form-group">
-                    <div class="col-12 input-group">
-                        <div class="input-group-prepend ">
-                            <label class="input-group-text">
-                                <%= f.label :email, :class => "control-label" %>
-                            </label>
+<head>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+        <input type="hidden" id="locale" value="<%= I18n.locale %>">
+        <div class="container-login">
+            <div class="card-body d-flex justify-content-center">
+                <div class="container-login-background d-flex justify-content-center">
+                    <div class="row container-login-content">
+                        <div class="card-header form-group container-login-title col-12">
+                            <h2>Contrhora</h2>
                         </div>
-                        <%= f.text_field :email, :class => "form-control" %>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-12 input-group">
-                        <div class="input-group-prepend ">
-                            <label class="input-group-text">
-                                <%= f.label :password, :class => "control-label" %>
-                            </label>
+                        <div class="form-group col-12">
+                            <% if @session.errors.has_key? :base %>
+                                <div class="alert alert-danger" role="alert">
+                                    <%= @session.errors[:base].join(',') %>
+                                    <a href="" class="close">&times;</a>
+                                </div>
+                            <% end %>
+                            <%= form_for @session do |f| %>
+                                <div class="row form-group">
+                                    <div class="col-12 input-group">
+                                        <div class="input-group-prepend col-2">
+                                            <label class="input-group-text col-12">
+                                                <%= f.label :email, :class => "control-label" %>
+                                            </label>
+                                        </div>
+                                        <%= f.text_field :email, :class => "form-control col-10" %>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 input-group">
+                                        <div class="input-group-prepend col-2">
+                                            <label class="input-group-text col-12">
+                                                <%= f.label :password, class: "control-label" %>
+                                            </label>
+                                        </div>
+                                        <%= f.password_field :password, class: "form-control col-10" %>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <%= f.submit "Sign in", class: "btn btn-primary" %>
+                                    </div>
+                                </div>
+                            <% end %>
                         </div>
-                        <%= f.password_field :password, :class => "form-control" %>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col text-center">
-                        <%= f.submit "Sign in", class: "btn btn-primary" %>
-                    </div>
-                </div>
-            <% end %>
+            </div>
         </div>
-    </div>
-</div>    
+</body> 
