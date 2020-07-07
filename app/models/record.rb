@@ -49,32 +49,40 @@ class Record < ApplicationRecord
   end
 
   def self.import_csv(file_path)
-    imported = true
-    errors = Array.new
+    records_imported = Array.new
+    
     CSV.foreach(file_path, headers: true, col_sep: ';') do |row|
       line = row.to_h
       user_name = line['Colaborador']
+      if user_name.blank? == ''
+        next
+      end
       user = User.find_user_by_name(user_name)
       if user.present?
         record = csv_record(line)
         record.user = user
-        record_existent = record_existent(record)
-        unless record_existent.present?
-          unless record.save
-            puts record.errors.messages
-      #       imported = false
-      #       errors.push(record.errors.messages)
-          end
-        end
-      # else
-      #   imported = false
-      #   errors.push('user not found')
+        records_imported << record
+      else
+        puts 'User ' + user_name.to_s + ' not found!'
       end
     end
-    JSON.parse('{"imported":' + imported.to_s + ', "errors": ' + errors.to_json + '}')
+    save_records(records_imported)
   end
 
   private 
+
+    def self.save_records(records)
+      error = false
+      records.each do |record|
+        unless record_existent(record).present?
+          unless record.save
+            puts record.errors.messages
+            error= true
+          end
+        end
+      end
+      error
+    end
 
     def time_to_minutes(time)
       hour, minute = time.split(':').map(&:to_i)

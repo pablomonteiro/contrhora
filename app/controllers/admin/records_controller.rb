@@ -16,13 +16,13 @@ class Admin::RecordsController < ApplicationController
 
     def import
         file_path = params['file_upload']
-        response = Record.import_csv(file_path)
-        if response["imported"]
-            redirect_to action: :index
-        else
-            flash[:messages] = response["errors"]
-            redirect_to action: :index
-        end
+        has_error = Record.import_csv(file_path)
+        # errors = Array.new
+        # if has_error 
+        #     error << "Alguns registros não puderam ser importados" 
+        # end
+        flash[:messages] = Array.new
+        redirect_to action: :index
     end
 
     private 
