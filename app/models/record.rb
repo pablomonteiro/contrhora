@@ -48,25 +48,27 @@ class Record < ApplicationRecord
     self.user.name
   end
 
-  def self.import_csv(csv)
+  def self.import_csv(file_path)
     imported = true
     errors = Array.new
-    csv.each do |row|
-      user_name = row['User']
+    CSV.foreach(file_path, headers: true, col_sep: ';') do |row|
+      line = row.to_h
+      user_name = line['Colaborador']
       user = User.find_user_by_name(user_name)
       if user.present?
-        record = csv_record(row)
+        record = csv_record(line)
         record.user = user
         record_existent = record_existent(record)
         unless record_existent.present?
           unless record.save
-            imported = false
-            errors.push(record.errors.messages)
+            puts record.errors.messages
+      #       imported = false
+      #       errors.push(record.errors.messages)
           end
         end
-      else
-        imported = false
-        errors.push('user not found')
+      # else
+      #   imported = false
+      #   errors.push('user not found')
       end
     end
     JSON.parse('{"imported":' + imported.to_s + ', "errors": ' + errors.to_json + '}')
@@ -95,15 +97,16 @@ class Record < ApplicationRecord
       end
     end
 
-    def self.csv_record(csv)
+    def self.csv_record(line)
       record = Record.new
-      record.project = csv['Project']
-      record.issue = csv['Issue']
-      record.register = csv['Date']
-      record.hour_in = csv['HourIn']
-      record.hour_out = csv['HourOut']
-      record.requester = csv['Requester']
-      record.comment = csv['Comment']
+      record.project = line['Equipe']
+      record.issue = line['Tarefa']
+      date_in = DateTime.strptime(line['Inicio'], "%m/%d/%Y %H:%M")
+      record.register = date_in.to_date
+      record.hour_in = date_in.strftime('%H:%M')
+      record.hour_out = DateTime.strptime(line['Fim'], "%m/%d/%Y %H:%M").strftime('%H:%M')
+      record.requester = line['Solicitado por']
+      record.comment = line['O que foi feito']
       record
     end
 

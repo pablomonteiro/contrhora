@@ -15,9 +15,8 @@ class Admin::RecordsController < ApplicationController
     end
 
     def import
-        file = params['file_upload']
-        csv_file = CSV.parse(File.read(file.path), headers: true, col_sep: ';')
-        response = Record.import_csv(csv_file)
+        file_path = params['file_upload']
+        response = Record.import_csv(file_path)
         if response["imported"]
             redirect_to action: :index
         else
