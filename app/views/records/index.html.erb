@@ -1,5 +1,30 @@
 <div class="card-body">
     <div class="container">
-        <%= render "/admin/records/grid_records" %>
+        <%= form_with url: search_records_path, method: :get, remote: true do |form| %>
+            <div class="row mb-4">
+                <div class="col-5 input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">
+                            <%= t 'records.filter.date.ini' %>
+                        </label>
+                    </div>
+                    <%= form.date_field :date_ini, value: @date_ini_default.strftime("%Y-%m-%d"), class: "form-control" %>
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">
+                            <%= t 'records.filter.date.fin' %>
+                        </label>
+                    </div>
+                    <%= form.date_field :date_fin, value: @date_fin_default.strftime("%Y-%m-%d"), class: "form-control" %>
+                </div>
+                <div class="col-4 input-group">
+                    <div class="col-3">
+                        <%= form.submit t('records.filter.search'), class: "btn btn-success btn-sm" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <div id="grid_my_records_div">
+            <%= render "/admin/records/grid_records" %>
+        </div>
     </div>
 </div>

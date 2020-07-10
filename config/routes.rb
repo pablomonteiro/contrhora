@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
     root 'home#index'
 
-    resources :records
+    resources :records do 
+      get 'search', to: 'records#search', on: :collection
+    end
     resources :users, only: [] do
       get 'change_password', on: :member
       patch 'update_password', on: :member

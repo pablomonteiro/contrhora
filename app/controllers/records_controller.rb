@@ -3,9 +3,9 @@ class RecordsController < ApplicationController
     before_action :require_authentication
 
     def index
-        @controller_name = params[:controller]
-        @records = Record.of_user(current_user).this_month.register_desc
-        @total_spent_time = calc_total_spent_time
+        @date_ini_default = Date.current.beginning_of_month
+        @date_fin_default = Date.current.end_of_month
+        search_records(@date_ini_default, @date_fin_default)
     end
 
     def new
@@ -47,6 +47,12 @@ class RecordsController < ApplicationController
         @record = Record.find(params[:id])
     end
 
+    def search
+        date_ini = params[:date_ini]
+        date_fin = params[:date_fin]
+        search_records(date_ini, date_fin)
+    end
+
     private 
 
     def param_record
@@ -55,12 +61,19 @@ class RecordsController < ApplicationController
 
     private 
 
-    def calc_total_spent_time
-        total = 0
-        @records.each do |record|
-            total += record.time_spent_number
+        def calc_total_spent_time
+            total = 0
+            @records.each do |record|
+                total += record.time_spent_number
+            end
+            total.divmod(60).join(':')
         end
-        total.divmod(60).join(':')
-    end
+
+        def search_records(date_ini, date_fin)
+            puts date_ini
+            puts date_fin
+            @records = Record.search_by_date(Record.of_user(current_user), date_ini, date_fin).register_desc
+            @total_spent_time = calc_total_spent_time
+        end
 
 end

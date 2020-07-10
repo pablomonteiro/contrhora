@@ -69,6 +69,14 @@ class Record < ApplicationRecord
     save_records(records_imported)
   end
 
+  def self.search_by_date(records, date_in, date_fin)
+    if date_in.present? && date_fin.present?
+      records.where("register BETWEEN ? AND ?", date_in, date_fin)
+    else
+      records
+    end
+  end
+
   private 
 
     def self.save_records(records)
@@ -94,14 +102,6 @@ class Record < ApplicationRecord
         records = of_user(user_id)
       else
         Record.all
-      end
-    end
-
-    def self.search_by_date(records, date_in, date_fin)
-      if date_in.present? && date_fin.present?
-        records.where("register BETWEEN ? AND ?", date_in, date_fin)
-      else
-        records
       end
     end
 
