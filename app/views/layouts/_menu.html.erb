@@ -9,7 +9,6 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <%= link_to t('record.menu.list_item'), records_path, class:"dropdown-item" %>
-                        <%= link_to t('record.menu.new_item'), new_record_path, class:"dropdown-item" %>
                         <% if user_admin? %>
                             <%= link_to t('record.menu.list_admin_item'), admin_records_path, class:"dropdown-item" %>
                         <% end %>
@@ -22,7 +21,6 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <%= link_to t('user.menu.list_item'), admin_users_path, class:"dropdown-item" %>
-                            <%= link_to t('user.menu.new_item'), new_admin_user_path, class:"dropdown-item" %>
                         </div>
                     </div>
                 <% end %>
