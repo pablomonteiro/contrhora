@@ -48,9 +48,15 @@ class RecordsController < ApplicationController
     end
 
     def search
-        date_ini = params[:date_ini]
-        date_fin = params[:date_fin]
-        search_records(date_ini, date_fin)
+        search = Search.new
+        search.date_ini = params[:date_ini]
+        search.date_fin = params[:date_fin]
+        unless search.is_valid_period?
+            @errors = ['Data Inicial não pode ser maior que Data Final']
+            @records = []
+            return 
+        end
+        search_records(search.date_ini, search.date_fin)
     end
 
     private 
