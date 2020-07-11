@@ -30,13 +30,13 @@
                         <%= t 'records.filter.date.ini' %>
                     </label>
                 </div>
-                <%= form.date_field :date_ini, class: "form-control" %>
+                <%= form.date_field :date_ini, value: @date_ini_default.strftime("%Y-%m-%d"),  class: "form-control" %>
                 <div class="input-group-prepend">
                     <label class="input-group-text">
                         <%= t 'records.filter.date.fin' %>
                     </label>
                 </div>
-                <%= form.date_field :date_fin, class: "form-control" %>
+                <%= form.date_field :date_fin, value: @date_fin_default.strftime("%Y-%m-%d"), class: "form-control" %>
             </div>
             <div class="col-4 input-group">
                 <div class="col-3">

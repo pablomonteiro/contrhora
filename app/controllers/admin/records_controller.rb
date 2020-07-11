@@ -3,7 +3,10 @@ class Admin::RecordsController < ApplicationController
     before_action :require_authentication
 
     def index
-        search_records
+        @date_ini_default = Date.current.beginning_of_month
+        @date_fin_default = Date.current.end_of_month
+        @records = Record.search(nil, @date_ini_default, @date_fin_default)
+        @total_spent_time = calc_total_spent_time
         respond_to do |format|
             format.html
             format.csv { send_data @records.to_csv(nil, nil, nil), filename: "records-#{Date.today}.csv" }
@@ -11,7 +14,12 @@ class Admin::RecordsController < ApplicationController
     end
 
     def search
-        search_records
+        @controller_name = params[:controller]
+        user_id = params[:user]    
+        date_ini = params[:date_ini]
+        date_fin = params[:date_fin]
+        @records = Record.search(user_id, date_ini, date_fin)
+        @total_spent_time = calc_total_spent_time
     end
 
     def import
@@ -26,15 +34,6 @@ class Admin::RecordsController < ApplicationController
     end
 
     private 
-
-    def search_records
-        @controller_name = params[:controller]
-        user_id = params[:user]    
-        date_ini = params[:date_ini]
-        date_fin = params[:date_fin]
-        @records = Record.search(user_id, date_ini, date_fin)
-        @total_spent_time = calc_total_spent_time
-    end
 
     def calc_total_spent_time
         total = 0
