@@ -14,10 +14,10 @@ class Record < ApplicationRecord
     where(:user_id => user_id)
   end
 
-  def self.search(user_search, date_ini, date_fin)
-    if user_search.present? || (date_ini.present? && date_fin.present?)
-      records = search_by_user(user_search)
-      search_by_date(records, date_ini, date_fin)
+  def self.search(search_filter)
+    if search_filter.user_id.present? || (search_filter.date_ini.present? && search_filter.date_fin.present?)
+      records = search_by_user(search_filter.user_id)
+      search_by_date(records, search_filter.date_ini, search_filter.date_fin)
     else
       this_month.user_asc.register_desc
     end
@@ -32,13 +32,13 @@ class Record < ApplicationRecord
     time_to_minutes(time_spent)
   end
 
-  def self.to_csv(user_id, date_ini, date_fin)
+  def self.to_csv(records)
     header = %w{User Project Issue Date HourIn HourOut Requester Comment}
     attributes = %w{user_name project issue register hour_in hour_out requester comment}
     options = {headers: true, col_sep: ';'}
     CSV.generate(options) do |csv|
       csv << header
-      self.search(user_id, date_ini, date_fin).each do |record|
+      records.each do |record|
         csv << attributes.map{ |attr| record.send(attr) }
       end
     end

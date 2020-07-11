@@ -3,9 +3,11 @@ class RecordsController < ApplicationController
     before_action :require_authentication
 
     def index
-        @date_ini_default = Date.current.beginning_of_month
-        @date_fin_default = Date.current.end_of_month
-        search_records(@date_ini_default, @date_fin_default)
+        search_filter = Search.new
+        search_filter.define_current_month
+        @date_ini_default = search_filter.date_ini
+        @date_fin_default = search_filter.date_fin
+        search_records(search_filter)
     end
 
     def new
@@ -48,15 +50,13 @@ class RecordsController < ApplicationController
     end
 
     def search
-        search = Search.new
-        search.date_ini = params[:date_ini]
-        search.date_fin = params[:date_fin]
-        unless search.is_valid_period?
+        search_filter = Search.new(params[:date_ini], params[:date_fin])
+        unless search_filter.is_valid_period?
             @errors = ['Data Inicial não pode ser maior que Data Final']
             @records = []
             return 
         end
-        search_records(search.date_ini, search.date_fin)
+        search_records(search_filter)
     end
 
     private 
@@ -75,10 +75,8 @@ class RecordsController < ApplicationController
             total.divmod(60).join(':')
         end
 
-        def search_records(date_ini, date_fin)
-            puts date_ini
-            puts date_fin
-            @records = Record.search_by_date(Record.of_user(current_user), date_ini, date_fin).register_desc
+        def search_records(search_filter)
+            @records = Record.search_by_date(Record.of_user(current_user), search_filter.date_ini, search_filter.date_fin).register_desc
             @total_spent_time = calc_total_spent_time
         end
 
