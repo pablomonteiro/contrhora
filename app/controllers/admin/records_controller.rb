@@ -7,20 +7,18 @@ class Admin::RecordsController < ApplicationController
         search_filter.define_current_month
         @date_ini_default = search_filter.date_ini
         @date_fin_default = search_filter.date_fin
-        @records = Record.search(search_filter)
-        @total_spent_time = calc_total_spent_time
+        find_records search_filter
     end
 
     def search
         @controller_name = params[:controller]
         search_filter = Search.new(params[:date_ini], params[:date_fin], params[:user])
-        @records = Record.search(search_filter)
-        @total_spent_time = calc_total_spent_time
+        find_records search_filter
     end
 
     def export
         search_filter = Search.new(params[:date_ini], params[:date_fin], params[:user])
-        @records = Record.search(search_filter)
+        find_records search_filter
         respond_to do |format|
             format.csv { send_data Record.to_csv(@records), filename: "records-#{Date.today}.csv" }
         end
@@ -39,12 +37,27 @@ class Admin::RecordsController < ApplicationController
 
     private 
 
-    def calc_total_spent_time
-        total = 0
-        @records.each do |record|
-            total += record.time_spent_number
+        def find_records search_filter
+            if search_filter.is_period_blank?
+                @errors = ['Data Inicial e Data Final precisam ser preenchidos!']
+                @records = []
+                return 
+            end
+            unless search_filter.is_invalid_period?
+                @errors = ['Data Inicial não pode ser maior que Data Final']
+                @records = []
+                return 
+            end
+            @records = Record.search(search_filter)
+            @total_spent_time = calc_total_spent_time
         end
-        total.divmod(60).join(':')
-    end
+
+        def calc_total_spent_time
+            total = 0
+            @records.each do |record|
+                total += record.time_spent_number
+            end
+            total.divmod(60).join(':')
+        end
 
 end

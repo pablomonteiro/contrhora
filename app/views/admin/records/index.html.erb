@@ -1,19 +1,5 @@
 <div class="container">
-    <% if flash[:messages] %>
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <p><%= t('records.errors.title') %></p>
-            <ul>
-                <% flash[:messages].each do |error| %>
-                    <li>
-                    <%= error%>
-                    </li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
+    <div id="errors_messages"></div>
     <%= form_with url: search_admin_records_path, method: :get, remote: true do |form| %>
         <div class="row mb-4">
             <div class="col-3 input-group ">

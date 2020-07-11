@@ -1,1 +1,2 @@
 Rails.$("#grid_records_div")[0].innerHTML= "<%= j render 'grid_records', records: @records %>"
+Rails.$("#errors_messages")[0].innerHTML = "<%= j render 'layouts/message', errors: @errors%>"

@@ -15,8 +15,12 @@ class Search
         @date_fin = Date.current.end_of_month
     end
 
-    def is_valid_period?
-        return date_ini < date_fin
+    def is_period_blank?
+        date_ini.blank? || date_fin.blank?
+    end
+
+    def is_invalid_period?
+        date_ini < date_fin
     end
 
 end

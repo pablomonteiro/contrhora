@@ -51,7 +51,12 @@ class RecordsController < ApplicationController
 
     def search
         search_filter = Search.new(params[:date_ini], params[:date_fin])
-        unless search_filter.is_valid_period?
+        if search_filter.is_period_blank?
+            @errors = ['Data Inicial e Data Final precisam ser preenchidos!']
+            @records = []
+            return 
+        end
+        unless search_filter.is_invalid_period?
             @errors = ['Data Inicial não pode ser maior que Data Final']
             @records = []
             return 
