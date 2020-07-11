@@ -3,6 +3,7 @@ class RecordsController < ApplicationController
     before_action :require_authentication
 
     def index
+        @controller_name = params[:controller]
         search_filter = Search.new
         search_filter.define_current_month
         @date_ini_default = search_filter.date_ini
@@ -50,6 +51,7 @@ class RecordsController < ApplicationController
     end
 
     def search
+        @controller_name = params[:controller]
         search_filter = Search.new(params[:date_ini], params[:date_fin])
         if search_filter.is_period_blank?
             @errors = ['Data Inicial e Data Final precisam ser preenchidos!']

@@ -18,10 +18,10 @@
                 <td><%= record.register.strftime("%d/%m/%Y") %></td>
                 <td><%= record.comment %></td>
                 <td><%= record.time_spent %></td>
-                <td><%= link_to 'Show', record_path(locale, record) %></td>
+                <td><%= link_to t('record.button.details'), record_path(locale, record) %></td>
                 <% if @controller_name == 'records' %>
-                    <td><%= link_to 'Edit', edit_record_path(locale, record) %></td>
-                    <td><%= link_to 'Destroy', record_path(locale, record), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td><%= link_to t('record.button.edit'), edit_record_path(locale, record) %></td>
+                    <td><%= link_to t('record.button.delete'), record_path(locale, record), method: :delete, data: { confirm: t('record.confirmation_delete')  } %></td>
                 <% end %>
             </tr>
         <% end %>

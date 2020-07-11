@@ -2,6 +2,7 @@ class User < ApplicationRecord
     validates_presence_of :name, :login, :email
     validates :admin, inclusion: { in: [ true, false ] }
     has_secure_password
+    has_many :records, dependent: :destroy
 
     scope :active_users, -> {where(active: true)}
 

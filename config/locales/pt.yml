@@ -39,6 +39,15 @@ pt:
     change_password: 'Alterar Senha'
 
   record:
+    button:
+      cancel: 'Cancelar'
+      back: 'Voltar'
+      edit: 'Editar'
+      details: 'Detalhar'
+      delete: 'Excluir'
+      deactivate: 'Desativar'
+      activate: 'Ativar'
+    confirmation_delete: 'Deseja realmente remover o registro?'
     label:
       title: 'Registros'
       project: 'Projeto'
@@ -62,6 +71,14 @@ pt:
       title: 'Registro'
 
   user:
+    button:
+      cancel: 'Cancelar'
+      back: 'Voltar'
+      edit: 'Editar'
+      delete: 'Deletar'
+      deactivate: 'Desativar'
+      activate: 'Ativar'
+    confirmation_delete: 'Deseja realmente remover o usuário?'
     change_password:
         button: 'Save'
     menu:
@@ -82,13 +99,6 @@ pt:
       email: 'Email'
       admin: 'Administrador'
       active: 'Ativo'
-
-  button:
-    cancel: 'Cancelar'
-    back: 'Voltar'
-    edit: 'Editar'
-    deactivate: 'Desativar'
-    activate: 'Ativar'
 
   total_spent_time: 'Total de Horas'
 

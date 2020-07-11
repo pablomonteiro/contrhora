@@ -96,6 +96,14 @@ en:
         admin: 'Time Records'
 
   user:
+    button:
+      cancel: 'Cancel'
+      back: 'Back'
+      edit: 'Edit'
+      delete: 'Delete'
+      deactivate: 'Deactivate'
+      activate: 'Activate'
+    confirmation_delete: 'Do you really want remove this user?'
     change_password:
       button: 'Save'
     menu:
@@ -116,13 +124,6 @@ en:
       email: 'Email'
       admin: 'Administrator'
       active: 'Active'
-  
-  button:
-    cancel: 'Cancel'
-    back: 'Back'
-    edit: 'Edit'
-    deactivate: 'Deactivate'
-    activate: 'Activate'
   
   total_spent_time: 'Total Spent Time'
 
