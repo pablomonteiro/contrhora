@@ -65,6 +65,7 @@ pt:
       new_item: 'Novo'
       list_item: 'Meus Registros'
       list_admin_item: 'Registros do Time'
+      my_grafic: 'Meu Gráfico'
     new:
       button: 'Gravar'
       cancel: 'Cancelar'

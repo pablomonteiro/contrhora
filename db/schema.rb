@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_07_07_125927) do
     t.string "hour_in"
     t.string "hour_out"
     t.string "requester"
+    t.string "month_year"
+    t.decimal "time_spent", precision: 10, scale: 2
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
     resources :records do 
       get 'search', to: 'records#search', on: :collection
+      get 'grafics', to: 'records#grafics', on: :collection
+      get 'line_chart', to: 'records#line_chart', on: :collection
     end
     resources :users, only: [] do
       get 'change_password', on: :member

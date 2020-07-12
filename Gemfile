@@ -31,6 +31,9 @@ gem 'rails-i18n'
 # Include bootstrap gem
 gem 'bootstrap', '~> 4.0.0' 
 
+# Include chartkick gem
+gem "chartkick"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -13,15 +13,21 @@ class RecordsController < ApplicationController
 
     def new
         @record = Record.new
+        @record.register = DateTime.now
     end
 
     def create
         @record = Record.new(param_record)
         @record.user_id = current_user.id
+        unless @record.valid?
+            render :new
+            return
+        end
+        @record.month_year = @record.register.strftime("%m/%Y")
+        @record.time_spent = @record.time_spent_in_decimal
         if @record.save
             redirect_to action: :index, notice: 'Register saved!'
         else
-            puts @record.errors.messages
             render :new
         end
     end
@@ -30,8 +36,17 @@ class RecordsController < ApplicationController
         @record = Record.find(params[:id])
     end
 
+    def grafics
+    end
+
+    def line_chart
+        render json: Record.of_user(current_user).group(:month_year).sum(:time_spent)
+    end
+
     def update
         @record = Record.find(params[:id])
+        @record.month_year = @record.register.strftime("%m/%Y")
+        @record.time_spent = Record.time_spent_in_decimal
         if @record.update(param_record)
             redirect_to action: :index, notice: 'Register updated!'
         else
@@ -77,7 +92,7 @@ class RecordsController < ApplicationController
         def calc_total_spent_time
             total = 0
             @records.each do |record|
-                total += record.time_spent_number
+                total += record.time_spent_in_minutes
             end
             total.divmod(60).join(':')
         end

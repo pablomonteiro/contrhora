@@ -94,6 +94,7 @@ en:
       new_item: 'New Record'
       list_item: 'My Records'
       list_admin_item: 'Time Records'
+      my_grafic: 'My Grafic'
     new:
       menu: 'New Record'
       button: 'Save Record'

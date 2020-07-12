@@ -28,8 +28,13 @@ class Record < ApplicationRecord
     spent.divmod(60).join(':')
   end
 
-  def time_spent_number
+  def time_spent_in_minutes
     time_to_minutes(time_spent)
+  end
+
+  def time_spent_in_decimal
+    decimal_time = time_spent_in_minutes.to_f / 60
+    decimal_time.round(2)
   end
 
   def self.to_csv(records)
@@ -60,6 +65,8 @@ class Record < ApplicationRecord
       user = User.find_user_by_name(user_name)
       if user.present?
         record = csv_record(line)
+        record.month_year = record.register.strftime("%m/%Y")
+        record.time_spent = record.time_spent_in_decimal
         record.user = user
         records_imported << record
       else
