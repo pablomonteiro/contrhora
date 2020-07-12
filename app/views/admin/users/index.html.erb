@@ -20,8 +20,16 @@
                             <td><%= user.name %></td>
                             <td><%= user.login %></td>
                             <td><%= user.email %></td>
-                            <td><%= user.admin %></td>
-                            <td><%= user.active %></td>
+                            <% if user.admin %>
+                                <td> <%= t('user.new.admin.true') %></td>
+                            <% else %>
+                                <td> <%= t('user.new.admin.false') %></td>
+                            <% end %>
+                            <% if user.active %>
+                                <td> <%= t('user.new.admin.true') %></td>
+                            <% else %>
+                                <td> <%= t('user.new.admin.false') %></td>
+                            <% end %>
                             <td><%= link_to t('user.button.edit'), edit_admin_user_path(locale, user) %></td>
                             <% if user.active %>
                                 <td><%= link_to t('user.button.deactivate'), deactivate_admin_user_path(locale, user), method: :patch %></td>

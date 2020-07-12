@@ -1,25 +1,25 @@
-<div class="row mb-4">
+<div class="row mb-2">
     <div class="col-12 input-group">
-        <div class="input-group-prepend ">
-            <label class="input-group-text">
+        <div class="input-group-prepend col-2">
+            <label class="input-group-text col-12">
                 <%= f.label :name %>
             </label>
         </div>
         <%= f.text_field :name, class: "form-control"  %>
     </div>
 </div>
-<div class="row mb-4">
+<div class="row mb-2">
     <div class="col-6 input-group">
-        <div class="input-group-prepend ">
-            <label class="input-group-text">
+        <div class="input-group-prepend col-4">
+            <label class="input-group-text col-12">
                 <%= f.label :login %>
             </label>
         </div>
         <%= f.text_field :login, class: "form-control"  %>
     </div>
     <div class="col-6 input-group">
-        <div class="input-group-prepend ">
-            <label class="input-group-text">
+        <div class="input-group-prepend col-3">
+            <label class="input-group-text col-12">
                 <%= f.label :email %>
             </label>
         </div>
@@ -27,19 +27,22 @@
     </div>
 </div>
 
-<div class="row mb-4 ">
-    <div class="col-12 input-group">
-        <div class="input-group-prepend ">
-            <label class="input-group-text">
-                <%= f.label :admin %>
-            </label>
+<div class="row mb-2 ">
+    <div class="col-6 input-group">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend col-4">
+                <label class="input-group-text col-12" for="userAdmin"><%= f.label :admin %></label>
+            </div>
+            <select class="custom-select col-6" name="user[admin]" id="userAdmin">
+                <option <% if @user.admin %>selected<% end %> value="true"><%=t('user.new.admin.true') %></option>
+                <option <% unless @user.admin %>selected<% end %> value="false"><%=t('user.new.admin.false') %></option>
+            </select>
         </div>
-        <%= f.check_box :admin %>
     </div>
 </div>
 <div class="row">
     <div class = "col text-center">
         <%= f.submit t('user.new.button') , class: "btn btn-large btn-primary" %>
-        <%= link_to t('btn.cancel'), admin_users_path %>
+        <%= link_to t('btn.cancel'), admin_users_path, class: "btn btn-large btn-secondary" %>
     </div>
 </div>
