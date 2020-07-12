@@ -1,64 +1,64 @@
 <div class="card-body">
     <div class="container">
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-4 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text"><%= t('record.label.project') %></label>
+                <div class="input-group-prepend col-5">
+                    <label class="input-group-text col-12 text-right"><%= t('record.label.project') %></label>
                 </div>
-                <label class="label-output"><%= @record.project %></label>
+                <label class="output-label col-7"><%= @record.project %></label>
             </div>
             <div class="col-4 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text"><%= t('record.label.issue') %></label>
+                <div class="input-group-prepend col-5">
+                    <label class="input-group-text col-12"><%= t('record.label.issue') %></label>
                 </div>
-                <label class="label-output"><%= @record.issue %></label>
+                <label class="output-label col-7"><%= @record.issue %></label>
             </div>
             <div class="col-4 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text"><label><%= t('record.label.register') %></label></label>
+                <div class="input-group-prepend col-5">
+                    <label class="input-group-text col-12"><label><%= t('record.label.register') %></label></label>
                 </div>
-                <label class="label-output"><%= @record.register.strftime("%d/%m/%Y") %></label>
+                <label class="output-label col-7"><%= @record.register.strftime("%d/%m/%Y") %></label>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-4 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text"><%= t('record.label.hour_in')  %></label>
+                <div class="input-group-prepend col-5">
+                    <label class="input-group-text col-12"><%= t('record.label.hour_in')  %></label>
                 </div>
-                <label class="label-output"><%= @record.hour_in %></label>
-            </div>
-            <div class="col-4 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text"><%= t('record.label.hour_out')  %></label>
-                </div>
-                <label class="label-output"><%= @record.hour_out %></label>
+                <label class="output-label col-7"><%= @record.hour_in %></label>
             </div>
             <div class="col-4 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text"><%= t('record.label.time_spent')  %></label>
+                <div class="input-group-prepend col-5">
+                    <label class="input-group-text col-12"><%= t('record.label.hour_out')  %></label>
                 </div>
-                <label class="label-output"><%= @record.time_spent %></label>
+                <label class="output-label col-7"><%= @record.hour_out %></label>
+            </div>
+            <div class="col-4 input-group">
+                <div class="input-group-prepend col-5">
+                    <label class="input-group-text col-12"><%= t('record.label.time_spent')  %></label>
+                </div>
+                <label class="output-label col-7"><%= @record.time_spent %></label>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text"><%= t('record.label.comment')  %></label>
+        <div class="row mb-2">
+            <div class="col-4 input-group">
+                <div class="input-group-prepend col-5">
+                    <label class="input-group-text col-12"><%= t('record.label.requester') %></label>
                 </div>
-                <label class="label-output"><%= @record.comment %></label>
+                <label class="output-label col-7"><%= @record.requester %></label>
             </div>
         </div>
-        <div class="row">
-            <div class="col-3 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text"><%= t('record.label.requester') %></label>
+        <div class="row mb-2">
+            <div class="col-2 input-group">
+                <div class="input-group-prepend col-11">
+                    <label class="input-group-text col-12"><%= t('record.label.comment')  %></label>
                 </div>
-                <label class="label-output"><%= @record.requester %></label>
             </div>
+            <label class="label-output col-10" style="margin-left:-30px"><%= @record.comment %></label>
         </div>
-        <div class="row">
+        <div class="row mb-2">
             <div class="col text-center">
-                <%= link_to t('btn.back'), records_path %>
+                <%= link_to t('record.button.back'), records_path, class: "btn btn-secondary btn-md" %>
             </div>
         </div>
     </div>

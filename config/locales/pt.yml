@@ -43,6 +43,7 @@ pt:
       cancel: 'Cancelar'
       back: 'Voltar'
       edit: 'Editar'
+      new: 'Salvar'
       details: 'Detalhar'
       delete: 'Excluir'
       deactivate: 'Desativar'
