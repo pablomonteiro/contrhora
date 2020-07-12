@@ -72,7 +72,7 @@ en:
     button:
       cancel: 'Cancel'
       back: 'Back'
-      new: 'Save'
+      save: 'Save'
       edit: 'Edit'
       details: 'Detail'
       delete: 'Delete'
@@ -109,6 +109,7 @@ en:
       cancel: 'Cancel'
       back: 'Back'
       edit: 'Edit'
+      save: 'Save'
       delete: 'Delete'
       deactivate: 'Deactivate'
       activate: 'Activate'

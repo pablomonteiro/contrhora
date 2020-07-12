@@ -43,7 +43,7 @@ pt:
       cancel: 'Cancelar'
       back: 'Voltar'
       edit: 'Editar'
-      new: 'Salvar'
+      save: 'Salvar'
       details: 'Detalhar'
       delete: 'Excluir'
       deactivate: 'Desativar'
@@ -62,7 +62,7 @@ pt:
       requester: 'Solicitante'
     menu:
       label: 'Registros'
-      new_item: 'Novo Registros'
+      new_item: 'Novo'
       list_item: 'Meus Registros'
       list_admin_item: 'Registros do Time'
     new:
@@ -76,6 +76,7 @@ pt:
       cancel: 'Cancelar'
       back: 'Voltar'
       edit: 'Editar'
+      save: 'Salvar'
       delete: 'Deletar'
       deactivate: 'Desativar'
       activate: 'Ativar'
