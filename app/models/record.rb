@@ -65,7 +65,7 @@ class Record < ApplicationRecord
       user = User.find_user_by_name(user_name)
       if user.present?
         record = csv_record(line)
-        record.month_year = record.register.strftime("%m/%Y")
+        record.fill_month_and_year
         record.time_spent = record.time_spent_in_decimal
         record.user = user
         records_imported << record
@@ -74,6 +74,12 @@ class Record < ApplicationRecord
       end
     end
     save_records(records_imported)
+  end
+
+  def fill_month_and_year
+    self.month_year = self.register.strftime("%m/%Y")
+    self.month = self.register.strftime("%m").to_i
+    self.year = self.register.strftime("%Y").to_i
   end
 
   def self.search_by_date(records, date_in, date_fin)
