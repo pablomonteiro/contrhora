@@ -73,7 +73,7 @@ class Admin::RecordsController < ApplicationController
         def calc_total_spent_time
             total = 0
             @records.each do |record|
-                total += record.time_spent_number
+                total += record.time_spent_in_minutes
             end
             total.divmod(60).join(':')
         end

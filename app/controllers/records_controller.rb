@@ -45,8 +45,10 @@ class RecordsController < ApplicationController
 
     def update
         @record = Record.find(params[:id])
+        @record.month = @record.register.strftime("%m").to_i
+        @record.year = @record.register.strftime("%Y").to_i
         @record.month_year = @record.register.strftime("%m/%Y")
-        @record.time_spent = Record.time_spent_in_decimal
+        @record.time_spent = @record.time_spent_in_decimal
         if @record.update(param_record)
             redirect_to action: :index, notice: 'Register updated!'
         else
