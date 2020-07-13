@@ -35,6 +35,24 @@ class Admin::RecordsController < ApplicationController
         redirect_to action: :index
     end
 
+    def grafics
+    end
+
+    def line_chart
+        records_by_user = Record.joins(:user).group('users.name', :month_year).sum(:time_spent)
+        list = records_by_user.group_by {|k| k[0][0]}.map {|k,v| {name: k, data: v.map{|k, v| {k[1] => v}}}}
+        list.each do |row|
+            json = []
+            row[:data].each do |d|
+                json << d.keys.first.to_json + ':' + d.values.first.to_s 
+            end
+            row[:data] = '{' + json.join(',') + '}'
+            row[:data] = row[:data]
+        end 
+        result = list.to_json.gsub('"{', "{").gsub('"}', "}").gsub('\\', "")
+        render json: JSON.parse(result)
+    end
+
     private 
 
         def find_records search_filter
