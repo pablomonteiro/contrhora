@@ -2,37 +2,43 @@
     <div id="errors_messages"></div>
     <%= form_with url: search_admin_records_path, method: :get, remote: true do |form| %>
         <div class="row mb-2">
-            <div class="col-4 input-group ">
-                <div class="input-group-prepend ">
-                    <label class="input-group-text">
-                        <%= t 'records.filter.user' %>
-                    </label>
+            <div class="col-8 input-group ">
+                <div class="col-6 input-group ">
+                    <div class="input-group-prepend col-4">
+                        <label class="input-group-text col-12">
+                            <%= t 'records.filter.user' %>
+                        </label>
+                    </div>
+                    <%= form.collection_select :user, User.all, :id, :name, {include_blank: true}, {class:"custom-select form-control col-8"} %>
                 </div>
-                <%= form.collection_select :user, User.all, :id, :name, {include_blank: true}, {class:"custom-select, form-control"} %>
-            </div>
-            <div class="col-4 input-group ">
-                <div class="input-group-prepend ">
-                    <label class="input-group-text">
-                        <%= t 'records.filter.project' %>
-                    </label>
+                <div class="col-6 input-group ">
+                    <div class="input-group-prepend col-4">
+                        <label class="input-group-text col-12">
+                            <%= t 'records.filter.project' %>
+                        </label>
+                    </div>
+                    <%= form.select :project, @projects, {include_blank: true}, {class:"custom-select form-control col-8"} %>
                 </div>
-                <%= form.select :project, @projects, {include_blank: true}, {class:"custom-select, form-control"} %>
             </div>
         </div>
         <div class="row mb-2">
             <div class="col-8 input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text">
-                        <%= t 'records.filter.date.ini' %>
-                    </label>
+                <div class="col-6 input-group">
+                    <div class="input-group-prepend col-4">
+                        <label class="input-group-text col-12">
+                            <%= t 'records.filter.date.ini' %>
+                        </label>
+                    </div>
+                    <%= form.date_field :date_ini, value: @date_ini_default.strftime("%Y-%m-%d"),  class: "form-control col-8" %>
                 </div>
-                <%= form.date_field :date_ini, value: @date_ini_default.strftime("%Y-%m-%d"),  class: "form-control" %>
-                <div class="input-group-prepend">
-                    <label class="input-group-text">
-                        <%= t 'records.filter.date.fin' %>
-                    </label>
+                <div class="col-6 input-group">
+                    <div class="input-group-prepend col-4">
+                        <label class="input-group-text col-12">
+                            <%= t 'records.filter.date.fin' %>
+                        </label>
+                    </div>
+                    <%= form.date_field :date_fin, value: @date_fin_default.strftime("%Y-%m-%d"), class: "form-control col-8" %>
                 </div>
-                <%= form.date_field :date_fin, value: @date_fin_default.strftime("%Y-%m-%d"), class: "form-control" %>
             </div>
             <div class="col-4 input-group">
                 <div class="col-3">
