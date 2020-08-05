@@ -5,7 +5,6 @@ class Record < ApplicationRecord
   belongs_to :user
   validates_presence_of :project, :issue, :comment, :register, :hour_in, :hour_out, :requester, :user_id
 
-  scope :this_month, -> { where("register BETWEEN ? AND ?", Date.current.beginning_of_month, Date.current.end_of_month)}
   scope :user_asc, -> { order('user_id ASC') }
   scope :register_desc, -> { order('register DESC') }
   scope :record_existent, ->(record) {where("project = ? AND issue = ? AND register = ? AND hour_in = ? AND hour_out = ?", record.project, record.issue, record.register, record.hour_in, record.hour_out)}
@@ -15,12 +14,11 @@ class Record < ApplicationRecord
   end
 
   def self.search(search_filter)
-    if search_filter.user_id.present? || (search_filter.date_ini.present? && search_filter.date_fin.present?)
-      records = search_by_user(search_filter.user_id)
-      search_by_date(records, search_filter.date_ini, search_filter.date_fin)
-    else
-      this_month.user_asc.register_desc
+    records = search_by_user(search_filter.user_id)
+    if search_filter.project.present?
+      records = records.where('project = ?', search_filter.project)
     end
+    search_by_date(records, search_filter.date_ini, search_filter.date_fin).user_asc.register_desc
   end
 
   def time_spent
@@ -69,8 +67,6 @@ class Record < ApplicationRecord
         record.time_spent = record.time_spent_in_decimal
         record.user = user
         records_imported << record
-      else
-        puts 'User ' + user_name.to_s + ' not found!'
       end
     end
     save_records(records_imported)
@@ -88,6 +84,20 @@ class Record < ApplicationRecord
     else
       records
     end
+  end
+
+  def self.generate_line_chart
+    records_by_user = Record.joins(:user).group('users.name', :month_year).sum(:time_spent)
+    list = records_by_user.group_by {|k| k[0][0]}.map {|k,v| {name: k, data: v.map{|k, v| {k[1] => v}}}}
+    list.each do |row|
+        json = []
+        row[:data].each do |d|
+            json << d.keys.first.to_json + ':' + d.values.first.to_s 
+        end
+        row[:data] = '{' + json.join(',') + '}'
+        row[:data] = row[:data]
+    end 
+    list.to_json.gsub('"{', "{").gsub('"}', "}").gsub('\\', "")
   end
 
   private 

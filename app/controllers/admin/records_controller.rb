@@ -5,6 +5,7 @@ class Admin::RecordsController < ApplicationController
     def index
         search_filter = Search.new
         search_filter.define_current_month
+        @projects = ['Varejofacil', 'Milênio', 'SysPDV', 'Produto']
         @date_ini_default = search_filter.date_ini
         @date_fin_default = search_filter.date_fin
         find_records search_filter
@@ -12,12 +13,12 @@ class Admin::RecordsController < ApplicationController
 
     def search
         @controller_name = params[:controller]
-        search_filter = Search.new(params[:date_ini], params[:date_fin], params[:user])
+        search_filter = fill_filter params
         find_records search_filter
     end
 
     def export
-        search_filter = Search.new(params[:date_ini], params[:date_fin], params[:user])
+        search_filter = fill_filter params
         find_records search_filter
         respond_to do |format|
             format.csv { send_data Record.to_csv(@records), filename: "records-#{Date.today}.csv" }
@@ -39,21 +40,15 @@ class Admin::RecordsController < ApplicationController
     end
 
     def line_chart
-        records_by_user = Record.joins(:user).group('users.name', :month_year).sum(:time_spent)
-        list = records_by_user.group_by {|k| k[0][0]}.map {|k,v| {name: k, data: v.map{|k, v| {k[1] => v}}}}
-        list.each do |row|
-            json = []
-            row[:data].each do |d|
-                json << d.keys.first.to_json + ':' + d.values.first.to_s 
-            end
-            row[:data] = '{' + json.join(',') + '}'
-            row[:data] = row[:data]
-        end 
-        result = list.to_json.gsub('"{', "{").gsub('"}', "}").gsub('\\', "")
+        result = Record.generate_line_chart
         render json: JSON.parse(result)
     end
 
     private 
+
+        def fill_filter params
+            Search.new(params[:date_ini], params[:date_fin], params[:user], params[:project])
+        end
 
         def find_records search_filter
             if search_filter.is_period_blank?

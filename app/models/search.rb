@@ -1,13 +1,14 @@
 class Search
     include ActiveModel::Validations
-    attr_accessor :user_id, :date_ini, :date_fin
+    attr_accessor :user_id, :date_ini, :date_fin, :project
 
     validates :date_ini, :date_fin, presence: true
     
-    def initialize(date_ini = nil, date_fin = nil, user_id = nil)
+    def initialize(date_ini = nil, date_fin = nil, user_id = nil, project = nil)
         @user_id = user_id 
         @date_ini = date_ini
         @date_fin = date_fin
+        @project = project
     end
 
     def define_current_month

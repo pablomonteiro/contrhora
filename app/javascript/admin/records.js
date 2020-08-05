@@ -9,6 +9,8 @@ $(document).ready(function() {
                 q += "&"+dates;
             else
                 q = "?"+dates;
+        if($("#project").val())
+            q += "&project="+$("#project").val();
         location.href = "/"+$("#locale").val()+"/admin/records/export.csv"+q
     })
 })
