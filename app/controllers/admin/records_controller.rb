@@ -27,11 +27,8 @@ class Admin::RecordsController < ApplicationController
 
     def import
         file_path = params['file_upload']
-        has_error = Record.import_csv(file_path)
-        # errors = Array.new
-        # if has_error 
-        #     error << "Alguns registros não puderam ser importados" 
-        # end
+        importer = RecordsImporter.new
+        has_error = importer.import_csv(file_path)
         flash[:messages] = Array.new
         redirect_to action: :index
     end
@@ -51,26 +48,10 @@ class Admin::RecordsController < ApplicationController
         end
 
         def find_records search_filter
-            if search_filter.is_period_blank?
-                @errors = ['Data Inicial e Data Final precisam ser preenchidos!']
-                @records = []
-                return 
-            end
-            unless search_filter.is_invalid_period?
-                @errors = ['Data Inicial não pode ser maior que Data Final']
-                @records = []
-                return 
-            end
-            @records = Record.search(search_filter)
-            @total_spent_time = calc_total_spent_time
-        end
-
-        def calc_total_spent_time
-            total = 0
-            @records.each do |record|
-                total += record.time_spent_in_minutes
-            end
-            total.divmod(60).join(':')
+            record_search = RecordsSearcher.new
+            record_search.validate_period search_filter
+            @records = record_search.search_records(search_filter)
+            @total_spent_time = record_search.calc_total_spent_time @records
         end
 
 end

@@ -13,14 +13,6 @@ class Record < ApplicationRecord
     where(:user_id => user_id)
   end
 
-  def self.search(search_filter)
-    records = search_by_user(search_filter.user_id)
-    if search_filter.project.present?
-      records = records.where('project = ?', search_filter.project)
-    end
-    search_by_date(records, search_filter.date_ini, search_filter.date_fin).user_asc.register_desc
-  end
-
   def time_spent
     spent = (time_to_minutes(self.hour_out) - time_to_minutes(self.hour_in))
     spent.divmod(60).join(':')
@@ -51,25 +43,8 @@ class Record < ApplicationRecord
     self.user.name
   end
 
-  def self.import_csv(file_path)
-    records_imported = Array.new
-    
-    CSV.foreach(file_path, headers: true, col_sep: ';') do |row|
-      line = row.to_h
-      user_name = line['Colaborador']
-      if user_name.blank? == ''
-        next
-      end
-      user = User.find_user_by_name(user_name)
-      if user.present?
-        record = csv_record(line)
-        record.fill_month_and_year
-        record.time_spent = record.time_spent_in_decimal
-        record.user = user
-        records_imported << record
-      end
-    end
-    save_records(records_imported)
+  def self.verify_exists? record
+    record_existent(record).present?
   end
 
   def fill_month_and_year
@@ -102,19 +77,6 @@ class Record < ApplicationRecord
 
   private 
 
-    def self.save_records(records)
-      error = false
-      records.each do |record|
-        unless record_existent(record).present?
-          unless record.save
-            puts record.errors.messages
-            error= true
-          end
-        end
-      end
-      error
-    end
-
     def time_to_minutes(time)
       hour, minute = time.split(':').map(&:to_i)
       60 * hour + minute
@@ -126,19 +88,6 @@ class Record < ApplicationRecord
       else
         Record.all
       end
-    end
-
-    def self.csv_record(line)
-      record = Record.new
-      record.project = line['Equipe']
-      record.issue = line['Tarefa']
-      date_in = DateTime.strptime(line['Inicio'], "%m/%d/%Y %H:%M")
-      record.register = date_in.to_date
-      record.hour_in = date_in.strftime('%H:%M')
-      record.hour_out = DateTime.strptime(line['Fim'], "%m/%d/%Y %H:%M").strftime('%H:%M')
-      record.requester = line['Solicitado por']
-      record.comment = line['O que foi feito']
-      record
     end
 
 end
