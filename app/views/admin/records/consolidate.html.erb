@@ -1,0 +1,46 @@
+<div class="card-body">
+    <div class="container">
+        <div id="errors_messages"></div>
+        <%= form_with url: search_consolidate_admin_records_path, method: :get, remote: true do |form| %>
+            <div class="row mb-2">
+                <div class="col-3 input-group ">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text col-12">
+                            <%= t 'records.filter.project' %>
+                        </label>
+                    </div>
+                    <%= form.select :project, @projects, {include_blank: true}, {class:"custom-select form-control col-8"} %>
+                </div>
+                <div class="col-3 input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text col-12">
+                            <%= t 'records.filter.date.ini' %>
+                        </label>
+                    </div>
+                    <%= form.date_field :date_ini, value: @date_ini_default.strftime("%Y-%m-%d"), class: "form-control col-8" %>
+                </div>
+                <div class="col-3 input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text col-12">
+                            <%= t 'records.filter.date.fin' %>
+                        </label>
+                    </div>
+                    <%= form.date_field :date_fin, value: @date_fin_default.strftime("%Y-%m-%d"), class: "form-control col-8" %>
+                </div>
+                <div class="col-3 input-group">
+                    <div class="col-6">
+                        <%= form.submit t('records.filter.search'), class: "btn btn-success btn-sm" %>
+                    </div>
+                    <div class="col-6">
+                        <button id="export_csv" type="button" class="btn btn-outline-info btn-sm"><%=t('records.filter.export.csv')%></button>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        
+        <div id="grid_records_div">
+            <%= render "grid_records_consolidate" %>
+        </div>
+
+    </div>
+</div>

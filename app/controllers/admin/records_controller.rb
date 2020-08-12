@@ -17,6 +17,12 @@ class Admin::RecordsController < ApplicationController
         find_records search_filter
     end
 
+    def search_consolidate
+        @controller_name = params[:controller]
+        search_filter = fill_filter params
+        find_consolidate search_filter
+    end
+
     def export
         search_filter = fill_filter params
         find_records search_filter
@@ -36,6 +42,15 @@ class Admin::RecordsController < ApplicationController
     def grafics
     end
 
+    def consolidate
+        search_filter = Search.new
+        search_filter.define_current_month
+        @projects = ['Varejofacil', 'Milênio', 'SysPDV', 'Produto']
+        @date_ini_default = search_filter.date_ini
+        @date_fin_default = search_filter.date_fin
+        find_consolidate search_filter
+    end
+
     def line_chart
         result = Record.generate_line_chart
         render json: JSON.parse(result)
@@ -52,6 +67,13 @@ class Admin::RecordsController < ApplicationController
             record_search.validate_period search_filter
             @records = record_search.search_records(search_filter)
             @total_spent_time = record_search.calc_total_spent_time @records
+        end
+
+        def find_consolidate search_filter
+            record_search = RecordsSearcher.new
+            record_search.validate_period search_filter
+            @records = record_search.search_records_consolidade(search_filter)
+            @total_spent_time = record_search.total_spent_time_consolidate @records
         end
 
 end

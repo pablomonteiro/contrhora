@@ -26,6 +26,8 @@ Rails.application.routes.draw do
         get 'export', to: 'records#export', on: :collection
         get 'grafics', to: 'records#grafics', on: :collection
         get 'line_chart', to: 'records#line_chart', on: :collection
+        get 'consolidate', to: 'records#consolidate', on: :collection
+        get 'search_consolidate', to: 'records#search_consolidate', on: :collection
       end
     end
     resources :user_sessions, :only => [:create, :index, :destroy]

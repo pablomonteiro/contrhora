@@ -9,10 +9,11 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <%= link_to t('record.menu.list_item'), records_path, class:"dropdown-item" %>
-                        <%= link_to t('record.menu.my_grafic'), grafics_records_path, class:"dropdown-item" %>
+                        <!--<%= link_to t('record.menu.my_grafic'), grafics_records_path, class:"dropdown-item" %>-->
                         <% if user_admin? %>
                             <%= link_to t('record.menu.list_admin_item'), admin_records_path, class:"dropdown-item" %>
-                            <%= link_to t('record.menu.time_grafic'), grafics_admin_records_path, class:"dropdown-item" %>
+                            <%= link_to t('record.menu.list_admin_item_consolidate'), consolidate_admin_records_path, class:"dropdown-item" %>
+                            <!--<%= link_to t('record.menu.time_grafic'), grafics_admin_records_path, class:"dropdown-item" %>-->
                         <% end %>
                     </div>
                 </div>
