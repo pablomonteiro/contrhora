@@ -12,7 +12,7 @@ class RecordsImporter
             if user.present?
                 record = csv_record(line)
                 record.fill_month_and_year
-                record.time_spent = record.time_spent_in_decimal
+                record.time_spent = TimeCalculator.calculate_spent_time record
                 record.user = user
                 records_imported << record
             end

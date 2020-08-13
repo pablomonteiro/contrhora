@@ -66,14 +66,14 @@ class Admin::RecordsController < ApplicationController
             record_search = RecordsSearcher.new
             record_search.validate_period search_filter
             @records = record_search.search_records(search_filter)
-            @total_spent_time = record_search.calc_total_spent_time @records
+            @total_spent_time = TimeCalculator.calculate_total_spent_time @records
         end
 
         def find_consolidate search_filter
             record_search = RecordsSearcher.new
             record_search.validate_period search_filter
             @records = record_search.search_records_consolidade(search_filter)
-            @total_spent_time = record_search.total_spent_time_consolidate @records
+            @total_spent_time = TimeCalculator.total_spent_time_consolidate @records
         end
 
 end

@@ -19,23 +19,7 @@ class RecordsSearcher
 
     def search_records_consolidade filter
         records = search filter
-        consolidate records
-    end
-
-    def calc_total_spent_time records
-        total = 0
-        records.each do |record|
-            total += record.time_spent_in_minutes
-        end
-        total.divmod(60).join(':')
-    end
-
-    def total_spent_time_consolidate records
-        total = 0
-        records.each do |row|
-            total += transform_time_in_minutes row[2]
-        end
-        total.divmod(60).join(':')
+        TimeCalculator.consolidate_time_by records
     end
 
     private 
@@ -55,25 +39,4 @@ class RecordsSearcher
                       .pluck('project', 'users.name', 'SUM(time_spent)')
             end
         end
-
-        def consolidate records
-            records.each do |row|
-                row[2] = calculate_time_spent row[2]
-            end
-            records
-        end
-
-        def transform_time_in_minutes time_string
-            hour, minute = time_string.split(':').map(&:to_i)
-            60 * hour + minute
-        end
-
-        def calculate_time_spent time_in_float
-            int_value = time_in_float.to_i
-            decimal_value = time_in_float.modulo(1)
-            minutes = ((decimal_value*60)/100).round(2)
-            minutes_in_string = minutes.to_s.gsub('0.', '')
-            int_value.to_s + ':' + minutes_in_string.rjust(2, '0')
-        end
-
 end

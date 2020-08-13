@@ -67,17 +67,15 @@ class RecordsController < ApplicationController
 
     private 
 
-    def param_record
-        params.require(:record).permit(:project, :issue, :register, :comment, :hour_in, :hour_out, :requester, :user_id)
-    end
-
-    private 
+        def param_record
+            params.require(:record).permit(:project, :issue, :register, :comment, :hour_in, :hour_out, :requester, :user_id)
+        end
 
         def search_records(search_filter)
             record_search = RecordsSearcher.new
             record_search.validate_period search_filter
             @records = record_search.search_records(search_filter)
-            @total_spent_time = record_search.calc_total_spent_time @records
+            @total_spent_time = TimeCalculator.calculate_total_spent_time @records
         end
 
 end

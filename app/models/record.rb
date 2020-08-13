@@ -13,20 +13,6 @@ class Record < ApplicationRecord
     where(:user_id => user_id)
   end
 
-  def time_spent
-    spent = (time_to_minutes(self.hour_out) - time_to_minutes(self.hour_in))
-    spent.divmod(60).join(':')
-  end
-
-  def time_spent_in_minutes
-    time_to_minutes(time_spent)
-  end
-
-  def time_spent_in_decimal
-    decimal_time = time_spent_in_minutes.to_f / 60
-    decimal_time.round(2)
-  end
-
   def self.to_csv(records)
     header = %w{User Project Issue Date HourIn HourOut Requester Comment}
     attributes = %w{user_name project issue register hour_in hour_out requester comment}
@@ -75,12 +61,11 @@ class Record < ApplicationRecord
     list.to_json.gsub('"{', "{").gsub('"}', "}").gsub('\\', "")
   end
 
-  private 
+  def time_spent_to_s
+    TimeCalculator.show_time_spent self.time_spent
+  end
 
-    def time_to_minutes(time)
-      hour, minute = time.split(':').map(&:to_i)
-      60 * hour + minute
-    end
+  private 
 
     def self.search_by_user(user_id)
       if user_id.present?
