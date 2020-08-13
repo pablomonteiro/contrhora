@@ -65,6 +65,7 @@ pt:
       new_item: 'Novo'
       list_item: 'Meus Registros'
       list_admin_item: 'Registros do Time'
+      list_admin_item_consolidate: 'Registros Consolidado'
       my_grafic: 'Meu Gráfico'
     new:
       button: 'Gravar'
