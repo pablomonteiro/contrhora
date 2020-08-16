@@ -114,6 +114,7 @@ pt:
         fin: 'Final'
       export:
         csv: 'Exportar CSV'
+        xls: 'Exportar XLS'
       import:
         csv: 'Importar CSV'
       search: 'Pesquisar'

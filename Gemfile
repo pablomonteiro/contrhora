@@ -34,6 +34,11 @@ gem 'bootstrap', '~> 4.0.0'
 # Include chartkick gem
 gem "chartkick"
 
+# Libs to export XLS
+gem 'rubyzip', '>= 1.2.1'
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

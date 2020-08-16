@@ -51,6 +51,19 @@ class Admin::RecordsController < ApplicationController
         find_consolidate search_filter
     end
 
+    def export_consolidate
+        search_filter = fill_filter params
+        find_consolidate search_filter
+        respond_to do |format|
+            format.xlsx {
+                response.headers[
+                    'Content-Disposition'
+                ] = "attachment; filename=records.xlsx"
+            }
+            format.html { render :index }
+        end
+    end
+
     def line_chart
         result = Record.generate_line_chart
         render json: JSON.parse(result)

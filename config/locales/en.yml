@@ -147,6 +147,7 @@ en:
         fin: 'Final'
       export:
         csv: 'Export CSV'
+        xls: 'Export XLS'
       import:
         csv: 'Import CSV'
       search: 'Search'

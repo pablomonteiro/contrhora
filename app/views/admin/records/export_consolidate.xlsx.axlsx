@@ -1,0 +1,22 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  title_heading = style.add_style(b: true, sz: 14, bg_color: "D3D3D3", alignment: {horizontal: :center, vertical: :center})
+  project_column_heading = style.add_style(b: true, sz: 12, bg_color: "EEE9E9", alignment: {horizontal: :center, vertical: :center})
+  column_right = style.add_style(alignment: {horizontal: :right, vertical: :center})
+  column_center = style.add_style(alignment: {horizontal: :center, vertical: :center})
+
+  wb.add_worksheet(name: "Records") do |sheet|
+    #Add title header
+    sheet.add_row ["Consolidado"], style: title_heading
+    sheet.merge_cells "A1:C1"
+    # Add total time spent
+    sheet.add_row ["", "TOTAL", @total_spent_time], style: [column_right, column_right, column_right]
+    # Create the header row
+    sheet.add_row ["Projeto", "Colaborador", "Total de Horas"], style: project_column_heading
+    # Create entries for each item
+    @records.each do |record|
+      sheet.add_row [record[0], record[1], record[2]], style: [column_center, column_center, column_right]
+    end
+  end
+end

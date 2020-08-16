@@ -28,11 +28,11 @@
                     <%= form.date_field :date_fin, value: @date_fin_default.strftime("%Y-%m-%d"), class: "form-control col-8" %>
                 </div>
                 <div class="col-3 input-group">
-                    <div class="col-6">
-                        <%= form.submit t('records.filter.search'), class: "btn btn-success btn-sm" %>
+                    <div class="col-5">
+                        <%= form.submit t('records.filter.search'), class: "btn btn-success btn-md" %>
                     </div>
-                    <div class="col-6">
-                        <button id="export_csv" type="button" class="btn btn-outline-info btn-sm"><%=t('records.filter.export.csv')%></button>
+                    <div class="col-5">
+                        <button id="export_xls" type="button" class="btn btn-outline-info btn-md"><%=t('records.filter.export.xls')%></button>
                     </div>
                 </div>
             </div>

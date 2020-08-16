@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         get 'line_chart', to: 'records#line_chart', on: :collection
         get 'consolidate', to: 'records#consolidate', on: :collection
         get 'search_consolidate', to: 'records#search_consolidate', on: :collection
+        get 'export_consolidate', to: 'records#export_consolidate', on: :collection
       end
     end
     resources :user_sessions, :only => [:create, :index, :destroy]
