@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_07_07_125927) do
 
-  create_table "records", force: :cascade do |t|
+  create_table "records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "project"
     t.string "issue"
     t.text "comment"
@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 2020_07_07_125927) do
     t.integer "year"
     t.string "month_year"
     t.decimal "time_spent", precision: 10, scale: 2
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "login"
     t.string "password_digest"
