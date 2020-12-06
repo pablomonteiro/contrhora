@@ -5,7 +5,6 @@ class Admin::RecordsController < ApplicationController
     def index
         search_filter = Search.new
         search_filter.define_current_month
-        @projects = ['Varejofacil', 'Milênio', 'SysPDV', 'Produto']
         @date_ini_default = search_filter.date_ini
         @date_fin_default = search_filter.date_fin
         find_records search_filter
@@ -45,7 +44,6 @@ class Admin::RecordsController < ApplicationController
     def consolidate
         search_filter = Search.new
         search_filter.define_current_month
-        @projects = ['Varejofacil', 'Milênio', 'SysPDV', 'Produto']
         @date_ini_default = search_filter.date_ini
         @date_fin_default = search_filter.date_fin
         find_consolidate search_filter

@@ -5,7 +5,7 @@
                 <div class="input-group-prepend col-5">
                     <label class="input-group-text col-12 text-right"><%= t('record.label.project') %></label>
                 </div>
-                <label class="output-label col-7"><%= @record.project %></label>
+                <label class="output-label col-7"><%= @record.project.name %></label>
             </div>
             <div class="col-4 input-group">
                 <div class="input-group-prepend col-5">
@@ -45,7 +45,7 @@
                 <div class="input-group-prepend col-5">
                     <label class="input-group-text col-12"><%= t('record.label.requester') %></label>
                 </div>
-                <label class="output-label col-7"><%= @record.requester %></label>
+                <label class="output-label col-7"><%= @record.requester.name %></label>
             </div>
         </div>
         <div class="row mb-2">

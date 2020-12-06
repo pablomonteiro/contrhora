@@ -68,7 +68,7 @@ class RecordsController < ApplicationController
     private 
 
         def param_record
-            params.require(:record).permit(:project, :issue, :register, :comment, :hour_in, :hour_out, :requester, :user_id)
+            params.require(:record).permit(:project_id, :issue, :register, :comment, :hour_in, :hour_out, :requester_id, :user_id)
         end
 
         def search_records(search_filter)

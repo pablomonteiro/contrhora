@@ -3,13 +3,13 @@
         <div class="input-group-prepend">
             <%= f.label :project, class: "input-group-text" %>
         </div>
-        <%= f.select :project, ['Varejofacil', 'Milënio', 'SysPDV'], {}, {class:"custom-select"} %>
+        <%= f.collection_select :project_id, Project.actives, :id, :name, {include_blank: true}, {class:"custom-select form-control"} %>
     </div>
     <div class="col-4 input-group">
         <div class="input-group-prepend">
             <%= f.label :requester, class: "input-group-text" %>
         </div>
-        <%= f.select :requester, ['Cláudio', 'Elisane', 'Raymundo', 'Ricardo'], {}, {class:"custom-select"} %>
+        <%= f.collection_select :requester_id, Requester.actives, :id, :name, {include_blank: true}, {class:"custom-select form-control"} %>
     </div>
     <div class="col-4 input-group">
         <%= f.label :register, class: "input-group-text" %>

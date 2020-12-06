@@ -2,6 +2,7 @@ class RecordsCreater
 
     def create newRecord
         unless newRecord.valid?
+            puts newRecord.errors[]
             render :new
             return
         end

@@ -18,7 +18,7 @@
     <tbody>
         <% @records.each do |record| %>    
             <tr>
-                <td><%= record.project %></td>
+                <td><%= record.project.name %></td>
                 <td><%= record.user.name %></td>
                 <td><%= record.issue %></td>
                 <td><%= record.register.strftime("%d/%m/%Y") %></td>

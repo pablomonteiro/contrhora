@@ -3,7 +3,7 @@ class RecordsSearcher
     def search_records(filter)
         records = Record.search_by_user(filter.user_id)
         if filter.project.present?
-          records = records.where('project = ?', filter.project)
+          records = records.joins(:project).where('projects.id = ?', filter.project)
         end
         Record.search_by_date(records, filter.date_ini, filter.date_fin).user_asc.register_desc
     end
@@ -26,17 +26,17 @@ class RecordsSearcher
 
         def search filter
             if filter.project.present?
-                Record.joins(:user)
-                      .where('project = ? AND register BETWEEN ? AND ?', filter.project, filter.date_ini, filter.date_fin)
-                      .group('project', 'users.name')
-                      .order('users.name', 'project')
-                      .pluck('project', 'users.name', 'SUM(time_spent)')
+                Record.joins(:user).joins(:project)
+                      .where('projects.id = ? AND register BETWEEN ? AND ?', filter.project, filter.date_ini, filter.date_fin)
+                      .group('projects.name', 'users.name')
+                      .order('users.name', 'projects.name')
+                      .pluck('projects.name', 'users.name', 'SUM(time_spent)')
             else
-                Record.joins(:user)
+                Record.joins(:user).joins(:project)
                       .where('register BETWEEN ? AND ?', filter.date_ini, filter.date_fin)
-                      .group('project', 'users.name')
-                      .order('users.name', 'project')
-                      .pluck('project', 'users.name', 'SUM(time_spent)')
+                      .group('projects.name', 'users.name')
+                      .order('users.name', 'projects.name')
+                      .pluck('projects.name', 'users.name', 'SUM(time_spent)')
             end
         end
 end

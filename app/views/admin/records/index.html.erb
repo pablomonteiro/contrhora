@@ -17,7 +17,7 @@
                             <%= t 'records.filter.project' %>
                         </label>
                     </div>
-                    <%= form.select :project, @projects, {include_blank: true}, {class:"custom-select form-control col-8"} %>
+                    <%= form.collection_select :project, Project.actives, :id, :name, {include_blank: true}, {class:"custom-select form-control col-8"} %>
                 </div>
             </div>
         </div>

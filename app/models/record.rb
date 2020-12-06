@@ -3,7 +3,9 @@ require 'json'
 
 class Record < ApplicationRecord
   belongs_to :user
-  validates_presence_of :project, :issue, :comment, :register, :hour_in, :hour_out, :requester, :user_id
+  belongs_to :requester
+  belongs_to :project
+  validates_presence_of :project_id, :issue, :comment, :register, :hour_in, :hour_out, :requester_id, :user_id
 
   scope :user_asc, -> { order('user_id ASC') }
   scope :register_desc, -> { order('register DESC') }
@@ -15,7 +17,7 @@ class Record < ApplicationRecord
 
   def self.to_csv(records)
     header = %w{User Project Issue Date HourIn HourOut Requester Comment}
-    attributes = %w{user_name project issue register hour_in hour_out requester comment}
+    attributes = %w{user_name project_name issue register hour_in hour_out requester_name comment}
     options = {headers: true, col_sep: ';'}
     CSV.generate(options) do |csv|
       csv << header
@@ -28,6 +30,14 @@ class Record < ApplicationRecord
   def user_name
     self.user.name
   end
+
+  def project_name
+    self.project.name
+  end
+
+  def requester_name
+    self.requester.name
+  end 
 
   def self.verify_exists? record
     record_existent(record).present?
