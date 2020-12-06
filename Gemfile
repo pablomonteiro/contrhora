@@ -32,7 +32,7 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 
 # Include bootstrap gem
-gem 'bootstrap', '~> 4.0.0' 
+gem 'bootstrap', '~> 4.3.1' 
 
 # Include chartkick gem
 gem "chartkick"
