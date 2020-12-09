@@ -1,18 +1,15 @@
 class ChangeColumnsRequesterAndProject < ActiveRecord::Migration[6.0]
   def self.up
-    #add_column :records, :requester_id, :bigint, null: false
-    #add_column :records, :project_id, :bigint, null: false
 
     add_reference :records, :project, foreign_key: true
     add_reference :records, :requester, foreign_key: true
-
-
-    Record.all.each do |r|
-      requester = Requester.find_by_name(r.requester)
-      project = Project.find_by_name(r.project)
-      r.update_attributes(requester_id: requester.id, 
-                          project_id: project.id)
-    end
+    
+    # Correction of projects names
+    execute 'UPDATE RECORDS SET project = \'VarejoFacil\' WHERE project = \'Varejofacil\''
+    execute 'UPDATE RECORDS SET project = \'Milênio\' WHERE project = \'Milënio\''
+    # Migrate values of requesters and projects to FK references
+    execute 'UPDATE RECORDS JOIN REQUESTERS RQ ON REQUESTER = RQ.NAME SET REQUESTER_ID = RQ.ID'
+    execute 'UPDATE RECORDS JOIN PROJECTS P ON PROJECT = P.NAME SET PROJECT_ID = P.ID'
 
     remove_column :records, :project
     remove_column :records, :requester
