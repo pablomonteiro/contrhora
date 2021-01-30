@@ -11,10 +11,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: contrhora_dev
+  database: contrhora_development
   pool: 5
-  username: root
-  password: root123#
+  username: contrhora
+  password: 123
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -26,8 +26,8 @@ test:
   reconnect: false
   database: contrhora_test
   pool: 5
-  username: root
-  password: root123#
+  username: contrhora
+  password: 123
   socket: /tmp/mysql.sock
 
 production:
@@ -36,6 +36,6 @@ production:
   reconnect: false
   database: contrhora_production
   pool: 5
-  username: root
-  password: root123#
+  username: contrhora
+  password: 123
   socket: /tmp/mysql.sock
