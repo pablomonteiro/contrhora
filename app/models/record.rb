@@ -16,8 +16,8 @@ class Record < ApplicationRecord
   end
 
   def self.to_csv(records)
-    header = %w{User Project Issue Date HourIn HourOut Requester Comment}
-    attributes = %w{user_name project_name issue register hour_in hour_out requester_name comment}
+    header = %w{Usuario Projeto Issue Data Entrada Saida TempoGasto Solicitante Observacao}
+    attributes = %w{user_name project_name issue register hour_in hour_out time_spent_to_s requester_name comment}
     options = {headers: true, col_sep: ';'}
     CSV.generate(options) do |csv|
       csv << header
