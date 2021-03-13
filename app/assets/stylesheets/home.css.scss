@@ -42,6 +42,9 @@
 }
 
 .container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(243, 243, 243);
     width: 100%;
     height: 100%;
@@ -49,19 +52,31 @@
 
 .container-login-background {
     //background-color:rgb(212, 212, 212);
+    height: auto;
     width: 60%;
-    margin-top: 8%;
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: 6px;
 }
 
 .container-login-content {
-    background-color: #fff;
     width: 100%;
-    margin: 1%;
+    margin: 0;
 }
 
 .container-login-title {
-    margin-bottom: 5%;
     text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+    border-radius: 6px 6px 0 0 !important;
+
+    h2{
+        margin-bottom: 0;
+    }
+}
+
+.container-login-form{
+    margin-bottom: 0;
 }
 
 .container .label-align-right {
@@ -76,4 +91,28 @@
 .output-label {
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.header-menu{
+    display:flex;
+    align-items: center;
+
+    h4{
+        color: white;
+        margin-bottom:0;
+    }
+}
+
+button{
+    outline: none !important;
+    user-select: none !important;
+}
+
+.btn-home{
+    margin-right: 5px;
+    border-radius: 0.25rem !important;
+}
+
+label{
+    margin-bottom: 0;
 }
