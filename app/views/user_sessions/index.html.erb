@@ -28,7 +28,7 @@
                         <% end %>
                         <%= form_for @session do |f| %>
                             <label class="container-login__right__label">
-                                Email
+                                <%= f.label :email %>
                             </label>
                             <div class="row form-group">
                                 <div class="col-12 input-group">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <label class="container-login__right__label">
-                                Senha
+                                <%= f.label :password %>
                             </label>
                             <div class="row form-group">
                                 <div class="col-12 input-group">
