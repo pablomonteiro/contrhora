@@ -1,0 +1,190 @@
+// variables
+$level-1: 1;
+$level-2: 2;
+$level-3: 3;
+
+$page-primary-color: #17255A;
+$page-secondary-color: #F5E2C8;
+$page-tertiary-color: #2D336F;
+
+$primary-text-color: #555;
+$secondary-text-color: #b0b0b0;
+
+.container-login {
+    display: flex;
+    background-color: $page-primary-color;
+    width: 100%;
+    height: 100%;
+
+    &__left{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
+        
+        &__title {
+            position: relative;
+            z-index: $level-3;
+            text-align: end;
+            font-size: 48px;
+            font-weight: bold;
+            color: $page-secondary-color;
+            padding-right: 250px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid $page-secondary-color;
+            width: 800px;
+
+            @media screen and (max-width: 1300px) {
+                width: 500px;
+            }
+        }
+        
+        &::before{
+            position: absolute;
+            top: calc(50% - 85px);
+            right: 225px;
+            font-size: 68px;
+            font-weight: bold;
+            color: $page-tertiary-color;
+            z-index: $level-1;
+            content: "Controle de horas"
+        }
+
+
+        @media screen and (max-width: 1300px) {
+            &::before{
+                display: none;
+            }
+        }
+
+        &__circle{
+            position: absolute;
+            z-index: $level-1;
+            top: calc(50% - 152px);
+            right: -120px;
+            fill: $page-secondary-color;
+            shape-rendering: geometricPrecision;
+        }
+    }
+
+    &__right {
+        z-index: $level-3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 35vw;
+        max-width: 700px;
+        background-color: #fff;
+        border-radius: 6px 0 0 6px;
+        box-shadow: -3px 0 6px #00000029;
+
+
+        &__content{
+            width: 80%;
+        }
+
+        &__form{
+            margin-bottom: 0;
+        }
+        
+
+        &__title{
+            color: $primary-text-color;
+            padding-bottom: 1.5rem;
+        
+            h2{
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+
+            &__app{
+                display: none;
+            }
+        }
+
+        &__label{
+            font-size: 14px;
+            color: $secondary-text-color;
+            margin-bottom: 1rem;
+
+            &:not(:first-of-type){
+                margin-top: 0.5rem;
+            }
+        }
+
+        &__input{
+            border: 1px solid $secondary-text-color;
+            padding: 1rem 0.5rem;
+        }
+
+        &__button{
+            margin-top: 0.5rem;
+            width: 100%;
+            
+            input {
+                width: 100%;
+                background-color: $page-primary-color;
+                padding: 0.8rem 0.5rem;
+            }
+        }
+
+        &__new-user{
+            color: $secondary-text-color;
+            font-size: 12px;
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, $page-primary-color, $page-primary-color 50%, $page-secondary-color 50%);
+
+
+        
+        &__left{
+            display: none !important;
+        }
+
+        &__right{
+            border-radius: 6px;
+            height: 500px;
+            max-width: 600px;
+            width: 80%;
+            box-shadow: 0 0 10px #00000029;
+
+
+            &__title{
+                &__app{
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+        align-items: center;
+        background: white;
+        
+        &__left{
+            display: none !important;
+        }
+
+        &__right{
+            border-radius: none;
+            height: 100%;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: none;
+
+            &__title{
+                &__app{
+                    display: inline;
+                }
+            }
+        }
+    }
+}

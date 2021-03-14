@@ -41,45 +41,6 @@
     position: relative;
 }
 
-.container-login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(243, 243, 243);
-    width: 100%;
-    height: 100%;
-}
-
-.container-login-background {
-    //background-color:rgb(212, 212, 212);
-    height: auto;
-    width: 60%;
-    max-width: 450px;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 1px 2px 10px #00000029;
-}
-
-.container-login-content {
-    width: 100%;
-    margin: 0;
-}
-
-.container-login-title {
-    text-align: center;
-    color: white;
-    margin-bottom: 1rem;
-    border-radius: 6px 6px 0 0 !important;
-
-    h2{
-        margin-bottom: 0;
-    }
-}
-
-.container-login-form{
-    margin-bottom: 0;
-}
-
 .container .label-align-right {
     top: 10;
     text-align: right;
