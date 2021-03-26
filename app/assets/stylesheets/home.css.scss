@@ -78,3 +78,17 @@ button{
 label{
     margin-bottom: 0;
 }
+
+.home-svg{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 105px);
+    width: 100%;
+
+    svg{
+        width: 60vw;
+        height: 60vh;
+    }
+}
