@@ -6,47 +6,50 @@
 <body>
         <input type="hidden" id="locale" value="<%= I18n.locale %>">
         <div class="container-login">
-            <div class="card-body d-flex justify-content-center">
-                <div class="container-login-background d-flex justify-content-center">
-                    <div class="row container-login-content">
-                        <div class="card-header form-group container-login-title col-12">
-                            <h2>Contrhora</h2>
-                        </div>
-                        <div class="form-group col-12">
-                            <% if @session.errors.has_key? :base %>
-                                <div class="alert alert-danger" role="alert">
-                                    <%= @session.errors[:base].join(',') %>
-                                    <a href="" class="close">&times;</a>
+            <div class="container-login__left">
+                <h1 class="container-login__left__title">
+                    Contrhora
+                </h1>
+                <svg width="300" height="304" class="container-login__left__circle">
+                    <circle cx="150" cy="152" r="150" fill="inherit" />
+                </svg>
+            </div>
+            <div class="container-login__right">
+                <div class="row container-login__right__content">
+                    <div class="form-group container-login__right__title col-12">
+                        <h2>Login <span class="container-login__right__title__app"> no Contrhora</span></h2>
+                    </div>
+                    <div class="form-group col-12 container-login__right__form">
+                        <% if @session.errors.has_key? :base %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= @session.errors[:base].join(',') %>
+                                <a href="" class="close">&times;</a>
+                            </div>
+                        <% end %>
+                        <%= form_for @session do |f| %>
+                            <label class="container-login__right__label">
+                                <%= f.label :email %>
+                            </label>
+                            <div class="row form-group">
+                                <div class="col-12 input-group">
+                                    <%= f.text_field :email, :class => "form-control col-12 container-login__right__input" %>
                                 </div>
+                            </div>
+                            <label class="container-login__right__label">
+                                <%= f.label :password %>
+                            </label>
+                            <div class="row form-group">
+                                <div class="col-12 input-group">
+                                    <%= f.password_field :password, class: "form-control col-12 container-login__right__input" %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center container-login__right__button">
+                                    <%= f.submit "Entrar", class: "btn btn-primary" %>
+                                </div>
+                            </div>
                             <% end %>
-                            <%= form_for @session do |f| %>
-                                <div class="row form-group">
-                                    <div class="col-12 input-group">
-                                        <div class="input-group-prepend col-2">
-                                            <label class="input-group-text col-12">
-                                                <%= f.label :email, :class => "control-label" %>
-                                            </label>
-                                        </div>
-                                        <%= f.text_field :email, :class => "form-control col-10" %>
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-12 input-group">
-                                        <div class="input-group-prepend col-2">
-                                            <label class="input-group-text col-12">
-                                                <%= f.label :password, class: "control-label" %>
-                                            </label>
-                                        </div>
-                                        <%= f.password_field :password, class: "form-control col-10" %>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col text-center">
-                                        <%= f.submit "Sign in", class: "btn btn-primary" %>
-                                    </div>
-                                </div>
-                            <% end %>
-                        </div>
+                            <p class="container-login__right__new-user">Novo usuário? Solicite um acesso aos administradores do sistema</p>
                     </div>
                 </div>
             </div>

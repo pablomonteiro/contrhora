@@ -41,29 +41,6 @@
     position: relative;
 }
 
-.container-login {
-    background-color: rgb(243, 243, 243);
-    width: 100%;
-    height: 100%;
-}
-
-.container-login-background {
-    //background-color:rgb(212, 212, 212);
-    width: 60%;
-    margin-top: 8%;
-}
-
-.container-login-content {
-    background-color: #fff;
-    width: 100%;
-    margin: 1%;
-}
-
-.container-login-title {
-    margin-bottom: 5%;
-    text-align: center;
-}
-
 .container .label-align-right {
     top: 10;
     text-align: right;
@@ -76,4 +53,42 @@
 .output-label {
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.header-menu{
+    display:flex;
+    align-items: center;
+
+    h4{
+        color: white;
+        margin-bottom:0;
+    }
+}
+
+button{
+    outline: none !important;
+    user-select: none !important;
+}
+
+.btn-home{
+    margin-right: 5px;
+    border-radius: 0.25rem !important;
+}
+
+label{
+    margin-bottom: 0;
+}
+
+.home-svg{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 105px);
+    width: 100%;
+
+    svg{
+        width: 60vw;
+        height: 60vh;
+    }
 }
